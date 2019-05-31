@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/stylesheet4.css" />
+    <title>Restaurant "LA COREE"</title>
+</head>
+
+<body>
+    <header class="col-md-offset-2 col-md-10">
+
+        <ul class="col-md-12 menu2">
+            <li class="col-md-4">
+                <a href="presentation.html">Présentation</a></li>
+            <li class="col-md-4">
+                <a href="carte.html">La Carte</a></li>
+            <li class="col-md-4">
+                <a class=active href="contact.html">Contact</a></li>
+        </ul>
+
+    </header>
+
+    <div class="col-sm-2 col-md-2 logo">
+        <a href="page d'accueil.html"> <img src="style/logo4.png" /></a>
+    </div>
+
+    <main class="col-md-offset-2 col-md-10">
+
+        <div class="col-md-12 bgbody">
+
+            <div class="col-md-offset-1 col-md-10 carreblanc">
+
+                <div class="col-md-offset-1 col-md-10 contact">
+                    <h2>Nos coordonnées</h2>
+                    <div class="col-md-12 acces">
+                        A deux pas de l'arrêt Saxe Gambetta, le restaurant La Corée est un restaurant traditionnel coréen situé au cœur de Lyon.
+                        <br />Nous vous accueillons du lundi au samedi et vous proposons de découvrir une cuisine authentique
+                        et savoureuse, préparée dans la plus grande tradition coréenne.
+                    </div>
+                    <img src="style/plan.png" />
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="col-md-offset-2 col-md-10">
+        Adrésse: 40 Avenue Jean Jaurès 69007 Lyon<br /> Tél: 09 82 27 82 15 <br /> Horaire d'ouverture: 12h-14h30 / 19h-22h
+        Du lundi au samedi
+    </footer>
+
+
+    <script>
+        $('.menu2 a').on('mouseover', function () {
+            $('.menu2 a').addClass('opacity');
+        });
+
+        $('.menu2 a').on('mouseout', function () {
+            $('.menu2 a').removeClass('opacity');
+        });
+    </script>
+
+</body>
+
+</html>

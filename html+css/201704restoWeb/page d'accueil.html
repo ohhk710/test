@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/stylesheet.css" />
+    <title>Restaurant "LA COREE"</title>
+</head>
+
+<body>
+    <header>
+        <div class=" headercolor">
+            <div class="col-md-6 headerphoto">
+                <img src="style/prelogo.jpg" />
+            </div>
+            <div class="col-md-6 headertitle">
+                <div class="col-md-12 maintitle">
+                    <h1>Bienvenue <br /> Restaurant la Corée</h1>
+                    <h3>+ 09 82 27 82 15</h3>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="firstbody">
+
+            <ul class="col-md-12 menu1">
+            <li class="col-md-4">
+                <a href="presentation.html">Présentation</a></li>
+            <li class="col-md-4">
+                <a class=active href="carte.html">La Carte</a></li>
+            <li class="col-md-4">
+                <a href="contact.html">Contact</a></li>
+        </ul>
+
+            <div class="bodybody">
+                <div class="col-md-offset-1 col-md-3 kimchi">
+                    <h1>"Kimchi" <br /><span class="expkimchi"> La nourriture traditionnelle fermentée en Corée</span></h1>
+                    <img class="img-thumbnail" src="style/kimchi.jpg" alt="kimchi" />
+                    <img class="img-thumbnail" src="style/kimchi2.jpg" alt="kimchi" />
+                </div>
+
+
+                <div class="col-md-offset-1 col-md-7 bodyimgR">
+                        
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="col-md-12">
+        Adrésse: 40 Avenue Jean Jaurès 69007 Lyon<br /> Tél: 09 82 27 82 15 <br /> Horaire d'ouverture: 12h - 14h 30 / 19h
+        - 22h (Du lundi au samedi)
+    </footer>
+
+    <script>
+        $('.menu1 a').on('mouseover', function () {
+            $('.menu1 a').addClass('opacity');
+        });
+
+        $('.menu1 a').on('mouseout', function () {
+            $('.menu1 a').removeClass('opacity');
+        });
+    </script>
+
+</body>
+
+</html>

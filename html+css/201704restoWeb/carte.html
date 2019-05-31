@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/stylesheet3.css" />
+    <title>Restaurant "LA COREE"</title>
+</head>
+
+<body>
+    <header class="col-md-offset-2 col-md-10">
+
+        <ul class="col-md-12 menu2">
+            <li class="col-md-4">
+                <a href="presentation.html">Présentation</a></li>
+            <li class="col-md-4">
+                <a class=active href="carte.html">La Carte</a></li>
+            <li class="col-md-4">
+                <a href="contact.html">Contact</a></li>
+        </ul>
+
+        <ul class="col-md-12 menu3">
+            <li onclick="showMenu('#boisson');">Boissons/vin</li>
+            <li onclick="showMenu('#entree');">Entrée</li>
+            <li onclick="showMenu('#plat');">Plats</li>
+            <li onclick="showMenu('#dessert');">Desserts</li>
+        </ul>
+    </header>
+
+    <div class="col-sm-2 col-md-2 logo">
+        <a href="page d'accueil.html"> <img src="style/logo4.png" /></a>
+    </div>
+
+
+    <main class="col-md-offset-2 col-md-10">
+
+        <!-- Boisson -->
+        <div id="boisson" class="partial-content col-md-12 bgbody">
+            <h1>Boissons / vins</h1>
+
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1 carreblanc">
+
+                <div class="col-md-12 milieu1">
+                    <h1>Apéritif</h1>
+                    <ul>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/apm.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Apéritif maison </h3>
+                                    <div>soho,rhum,sirop de banane,vin blanc</div>
+                                    <div>5,5 €</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/mhs.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Maehwasou<span class="coreen"> (매화수)</span></h3>
+                                    <div>liqueur de prune 14%</div>
+
+                                    <ul class="option">
+                                        <li>le verre (5cl) : 3,5 €</li>
+                                        <li>la bouteille (30cl) : 13 €</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-12 milieu1">
+                    <h1>Bières <span class="coreen"> (33cl)</span></h1>
+                    <ul>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/hite.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>HITE(coréenne)</h3>
+                                </div>
+                                <div>bière coréenne 4,3% </div>
+                                <div>4,5 € </div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/leffe.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>LEFFE</h3>
+                                    <div>4,5 €</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12 milieu1">
+                    <h1>Alcools coréens</h1>
+                    <ul>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/soju.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Soju<span class="coreen"> (소주)</span></h3>
+                                </div>
+                                <div>saké coréen 18,5%</div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <ul class="option">
+                                            <li>le verre (5cl) : 4 €</li>
+                                            <li>la bouteille (36cl) : 14,5 €</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/bbj.png" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Bokbunja<span class="coreen"> (복분자)</span></h3>
+                                </div>
+                                <div>vin de framboises noires 15%</div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <ul class="option">
+                                            <li>le verre (5cl) : 4 €</li>
+                                            <li>la bouteille (37,5cl) : 19,5 €</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/bsj.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Bekseju<span class="coreen"> (백세주)</span></h3>
+                                </div>
+                                <div>vin de racines médicinales 14%</div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <ul class="option">
+                                            <li>le verre (5cl) : 4 €</li>
+                                            <li>la bouteille (37,5cl) : 17 €</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12 milieu1">
+                    <h1>Thes <span class="coreen"> (35cl)</span></h1>
+                    <ul>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/thevert.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Thé vert</h3>
+                                    <div>3,5 €</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/thej.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Thé jasmin</h3>
+                                    <div>3,5 €</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12 milieu1">
+                    <h1>Boisson coréennes</h1>
+                    <ul>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/mesil.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Méshil<span class="coreen"> (초록매실)</span></h3>
+                                </div>
+                                <div>boisson à la prune coréenne 18cl </div>
+                                <div>3,5 €</div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/aloe.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Aloe vera<span class="coreen">(알로에베라)</span></h3>
+                                    <div>3,5 €</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-md-12">
+                            <div class="col-md-4 leftphoto1">
+                                <img src="style/sj.jpg" />
+                            </div>
+                            <div class="col-md-8 rightexp1">
+                                <div>
+                                    <h3>Sujunggwa<span class="coreen">(수정과)</span></h3>
+
+                                </div>
+                                <div>boisson à la cannelle et gingembre 15cl</div>
+                                <div>3,5 €</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12 milieu1">
+                    <h1>Vins (Aoc) </h1>
+                    <h2>Vins Rouges</h2>
+                    <ul class="ulvin">
+                        <li class="col-md-6">
+                            <div class="leftvin">
+                                <h3>Côtes du rhône</h3>
+                                <div>E.guigal</div>
+                                <ul class="option">
+                                    <li>37.5cl : 13 €</li>
+                                    <li>75cl : 19 €</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="col-md-6">
+                            <div class="right vin">
+                                <h3>Saint joseph</h3>
+                                <div>la triboulette</div>
+                                <ul class="option">
+                                    <li>37.5cl : 17 €</li>
+                                    <li>75cl : 27 €</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2>Vins Rosés</h2>
+                    <ul class="ulvin">
+                        <li class="col-md-6">
+                            <div class="leftvin">
+                                <h3>Côtes de provence</h3>
+                                <div>cuvée du golfe de saint tropez</div>
+                                <ul class="option">
+                                    <li>37.5cl : 13 €</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="col-md-6">
+                            <div class="rightvin">
+                                <h3>Côtes de provence</h3>
+                                <div>perle de roseline</div>
+                                <ul class="option">
+                                    <li>75cl : 19 €</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2>Vins Blancs</h2>
+                    <ul class="ulvin">
+                        <li class="col-md-12">
+                            <div class="leftvin">
+                                <h3>Mâcon</h3>
+                                <div>la roche vigneuse</div>
+                                <ul class="option">
+                                    <li>37.5cl : 14 €</li>
+                                    <li>75cl : 22 €</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Entrée -->
+        <div id="entree" hidden class="partial-content col-md-12 bgbody">
+            <h1>Entrée</h1>
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1 carreblanc">
+
+                <div class="col-md-12 totalmilieu2">
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/menu6.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Mandoo<span class="coreen"> (군만두)</span></h2>
+                            <div>raviolis aux légumes frit </div>
+                            <div>5 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/td.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Tongdack<span class="coreen"> (닭강정)</span></h2>
+                            <div>beignets de poulet </div>
+                            <div>6 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/menu9.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Geunes<span class="coreen"> (전)</span></h2>
+                            <div>galettes</div>
+                            <div class="col-md-12">
+                                <ul>
+                                    <li>aux légumes <span class=" prix1">6 €</span> </li>
+                                    <li>au kimchi <span class=" prix1">7 €</span></li>
+                                    <li>fruits de mer <span class=" prix1">8 €</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/bbmandoo.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Bibim-mandoo<span class="coreen"> (비빔만두)</span> </h2>
+                            <div>salade+mandoo : <span class=prix1>8 €</span></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/menu5.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Kimbab<span class="coreen"> (김밥)</span></h2>
+                            <div>rouleaux de riz dans une feuille d'algue</div>
+                            <ul>
+                                <li>au boeuf : <span class=prix1>6 €</span></li>
+                                <li>aux légumes : <span class=prix1>7 €</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/mandoog.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Mandoogouck<span class="coreen"> (만두국)</span> </h2>
+                            <div>soupe de raviolis </div>
+                            <div>8 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu2">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/salades.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp2">
+                            <h2>Salades</h2>
+                            <ul>
+                                <li>salade + mandoo : <span class=prix1>13 €</span></li>
+                                <li>salade + tong dack : <span class=prix1>13 €</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Plat -->
+        <div id="plat" hidden class="partial-content col-md-12 bgbody">
+            <h1>Plats</h1>
+
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1 carreblanc">
+
+                <div class="col-md-12 title3">
+                    <h1>Plat + Riz + 3 Bannchannes*</h1>
+                    <div class="col-md-12 exp">* assortiments pour le plat en Corée</div>
+                </div>
+
+                <div class="col-md-12 title4">
+                    <h1>Formule du midi</h1>
+                </div>
+
+                <div class="col-md-12 Pmidi">
+                    <div class="col-md-12 Pmidiexp">
+                        <h3>Entrée + Plat <span class=" prix1">14 €</span> </h3>
+                        <ul>
+                            <li>Entrée : Mandoo(raviolis aux légumes) ou tong-dack(beignet de poulet)</li>
+                            <li>Plat : Jéyouk, Boulgogui ou Japtché</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-12 title4">
+                    <h1>Menus Midi (sauf samedi et jours fériés)</h1>
+                </div>
+
+                <div class="col-md-12 Pmidi">
+                    <div class="col-md-6 Pmidiexp">
+
+                        <h3>Jéyouk<span class="coreen"> (제육볶음)</span> <span class=" prix1">11.5 €</span>
+                        </h3>
+                        <div>porc sauté aux légumes pimenté</div>
+
+                    </div>
+                    <div class="col-md-6 Pmidiexp">
+
+                        <h3>Boulgogui<span class="coreen"> (불고기)</span> <span class=" prix1">11.5 €</span>
+                        </h3>
+                        <div>boeuf sauté aux légumes</div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 Pmidi">
+                    <div class="col-md-6 Pmidiexp">
+                        <h3>Barbecue <span class=" prix1">18 €</span>
+                        </h3>
+                        <div>viande,riz,salade,sauce,3 bannchannes</div>
+                        <ul>
+                            <li>au boeuf 180g<span class="coreen"> (소고기)</span></li>
+                            <li>à la poitrine de porc 180g<span class="coreen"> (삼겹살)</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 Pmidiexp">
+                        <h3>Japtché<span class="coreen"> (잡채)</span> <span class=" prix1">11.5 €</span>
+                        </h3>
+                        <div>nouilles sauté aux légumes et au boeuf<br />(ou Japtché végétarien)</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Pmidi">
+                    <div class="col-md-12 Pmidiexp">
+                        <h3>Bibimbab<span class="coreen"> (비빔밥)</span></h3>
+                        <div>riz et légumes dans un bol chauffé</div>
+                        <ul>
+                            <li>végétarien(sans oeuf): 12.5 €</li>
+                            <li>au boeuf : 13.5 €</li>
+                            <li>au thon : 14 €</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <diV class="col-md-12 title4">
+                    <h1>Nos plats</h1>
+                </diV>
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/menu1.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <ul class="col-md-12">
+                            <li>
+                                <div>
+                                    <h3>Jéyouk<span class="coreen">(제육볶음)</span></h3>
+                                </div>
+                                <div>porc sauté aux légumes pimenté</div>
+                                <div>14 €</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Jéyouk au kimchi<span class="coreen">(김치제육볶음)</span></h3>
+                                </div>
+                                <div>porc sauté aux kimchi</div>
+                                <div>15 €</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/menu7.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Japtché<span class="coreen"> (잡채)</span></h3>
+                        </div>
+                        <div>nouilles sauté aux légumes et au boeuf<br/>(ou Japtché végétarien)</div>
+                        <div>14 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/tdp.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Tong-dack<span class="coreen"> (닭강정)</span> </h3>
+                        </div>
+                        <div>beignets de poulet</div>
+                        <div>14 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/menu2.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Bibimbab<span class="coreen"> (비빔밥)</span></h3>
+                        </div>
+                        <div>riz et légumes dans un bol chauffé</div>
+                        <ul>
+                            <li>végétarien(sans oeuf): 14 €</li>
+                            <li>au boeuf : 15 €</li>
+                            <li>au thon : 16 €</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/menu10.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Kimchibokeumbab<span class="coreen"> (김치볶음밥)</span> </h3>
+                        </div>
+                        <div>riz sauté au kimchi, porc</div>
+                        <div>16 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/Crev.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Saeoubokeum<span class="coreen"> (새우볶음)</span> </h3>
+                        </div>
+                        <div>Crevettes sautés</div>
+                        <div>17 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/bgs.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Nengmyeun<span class="coreen"> (냉면)</span> </h3>
+                        </div>
+                        <div>soupe de nouilles froide pimenté (en été)</div>
+                        <div>15 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/kchit.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <ul class="col-md-12">
+                            <li>
+                                <div>
+                                    <h3>Denjangthigai<span class="coreen"> (된장찌개)</span> </h3>
+                                </div>
+                                <div>soupe de pâte de soja</div>
+                                <div>16 €</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Kimchitchigai<span class="coreen"> (김치찌개)</span></h3>
+                                </div>
+                                <div>soupe de kimchi</div>
+                                <div>
+                                    <ul>
+                                        <li>au porc : 16 €</li>
+                                        <li>au thon : 17 €</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-12 title5">
+                    <h2>Barbecue</h2>
+                </div>
+                <div class="col-md-12 title5">
+                    <h3>MENU Barbecue(2 personnes) <span class="prix1"> 60 €</span></h3>
+                    <h4>Entrée + Barbecue + Dessert </h4>
+                </div>
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/menu4.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Barbecue au boeuf<span class="coreen"> (소고기)</span></h3>
+                        </div>
+                        <div>boeuf 180g, salade,sauce,riz,3 bannchanns</div>
+                        <div>22 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/sgs.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Barbecue au porc<span class="coreen"> (삼겹살)</span></h3>
+                        </div>
+                        <div>poitrine de porc 180g, salade,riz,3 bannchanns</div>
+                        <div>22 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 title5">
+                    <h2>Boulgogui(2 personnes)</h2>
+                </div>
+                <diV class="col-md-12 Mplat">
+                    <div class="col-md-5 leftphoto">
+                        <img src="style/bbg.jpg" />
+                    </div>
+                    <div class="col-md-7 rightexp3">
+                        <div>
+                            <h3>Boulgogui<span class="coreen"> (불고기)</span> </h3>
+                        </div>
+                        <div>boeuf aux légumes,riz,3 bannchanns</div>
+                        <div>40 €</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 title5">
+                    <h3>Supplements</h3>
+                </div>
+                <div class="col-md-12 supplements">
+                    <ul>
+                        <li>Riz (supplémentaire) <span class="prix1">3 €</span> </li>
+                        <li>Kimchi (supplémentaire) <span class="prix1">3,5 €</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Dessert -->
+        <div id="dessert" hidden class="partial-content col-md-12 bgbody">
+            <h1>Desserts</h1>
+
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1 carreblanc">
+
+                <diV class="col-md-12 totalmilieu4">
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/kd.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Gyeong-dann<span class="coreen"> (경단)</span></h2>
+                            <div>gâteaux de de riz glutineux à la noix de coco</div>
+                            <div>5 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/r.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Rhobaklann<span class="coreen"> (호박란)</span></h2>
+                            <div>sorbet à la citrouille</div>
+                            <div>5 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/r.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Gogoumalann<span class="coreen"> (고구마란)</span></h2>
+                            <div>sorbet aux pommes de terre douce </div>
+                            <div>5 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/lychee.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Lychees au sirop<span class="coreen"> (리치)</span></h2>
+                            <div>4 €</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/gg.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Gingembres confits<span class="coreen"> (생강)</span></h2>
+                            <div>4,5 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/glace.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Glaces 2 boules</h2>
+                            <div>Manguee, Passion, Vanille, Thé vert, Sésame noir, Fraise, Chocolat </div>
+                            <div>6 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/thesucre.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Méshilcha<span class="coreen"> (매실차)</span></h2>
+                            <div>thé prune sucré coréen 15cl </div>
+                            <div>3 €</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 milieu4">
+                        <div class="col-md-5 leftphoto">
+                            <img src="style/thecitron.jpg" />
+                        </div>
+                        <div class="col-md-7 rightexp4">
+                            <h2>Youjacha<span class="coreen"> (유자차)</span></h2>
+                            <div>thé citron sucré coréen 15cl </div>
+                            <div>3 €</div>
+                        </div>
+                    </div>
+                </diV>
+
+
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="col-md-offset-2 col-md-10">
+        Adrésse: 40 Avenue Jean Jaurès 69007 Lyon<br /> Tél: 09 82 27 82 15 <br /> Horaire d'ouverture: 12h-14h30 / 19h-22h
+        Du lundi au samedi
+    </footer>
+
+
+    <script>
+                         $('.menu2 a').on('mouseover', function () {
+                             $('.menu2 a').addClass('opacity');
+                         });
+
+                         $('.menu2 a').on('mouseout', function () {
+                             $('.menu2 a').removeClass('opacity');
+                         });
+
+                         function showMenu(id) {
+                             $('.partial-content').hide();
+                             $(id).show();
+                         }
+    </script>
+</body>
+
+</html>
