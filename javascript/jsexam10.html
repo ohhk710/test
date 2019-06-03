@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>배열 생성과 활용(2)</h1>
+	<hr>
+
+	<script>
+		var a1 = new Array();//빈배열생셩
+		var a2 = new Array(10); //10개의 항 갖는. 한개요소/ 크기
+		var a3 = new Array('가'); // '가'가 저장된 배열 객체생성/원소값
+		var a4 = new Array(10, 20); //10,20있는 객체생성/원소값
+		var a5 = new Array(1, 2, 3, 4, 5); //원소값
+		
+		/* window.alert(a1.length);//0
+		 window.alert(a2.length);//숫자 하나일떄만 크기=10
+		 window.alert(a3.length);//원소값=1
+		 window.alert(a4.length);//두개이상은 원소 값으로 인식=2
+		 window.alert(a5.length);//원소값=5 */
+		 
+		document.write(a1.toString()+ "<br>");
+		document.write(a2.toString() + "<br>");
+		document.write(a3.toString() + "<br>");
+		document.write(a4.toString() + "<br>");
+		document.write(a5.toString() + "<br>");
+		
+		var d = new Date();
+		document.write(d.toString()+"<br>");
+		document.write(d + "<br>");
+	</script>
+
+
+
+</body>
+</html>

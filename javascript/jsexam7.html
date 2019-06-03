@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+span {
+	color: red
+}
+</style>
+
+</head>
+
+<body>
+	<h1>JavaScript의 연산자2</h1>
+	<hr>
+	<pre>
+<script>
+	var num = window.prompt("체크하려는 숫자를 입력 해주세요");
+	if (isNaN(num) || num == '' || num == null) {
+		document.writeln("<span>숫자</span>를 입력해 주세요!!!");//span 은 부분설정. 색깔스타일설정함
+		//document.writeln("숫자를 입력해 주세요!!!");
+	} else {
+		num % 2 == 0 && document.writeln(num + "는 짝수");
+		num % 2 == 0 || document.writeln(num + "는 홀수");
+	}
+</script>
+</pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>JavaScript의 연산자2</h1>
+	<hr>
+	<pre>
+<script>
+	while (true) {
+		var num = window.prompt("체크하려는 숫자를 입력 해주세요");
+		if (isNaN(num) || num == '' || num == null) {
+			document.writeln("숫자를 입력해 주세요!!!");
+		} else {
+			num % 2 == 0 && document.writeln(num + "는 짝수");
+			num % 2 == 0 || document.writeln(num + "는 홀수");
+		}
+		var result = window.confirm("계속하겠습니까? ");//변수에 넣음
+		if (result == false)
+			break;
+	}
+</script>
+</pre>
+</body>
+</html>
