@@ -1,0 +1,80 @@
+[ JDBC 실습 1 ]
+
+작성 클래스명 : SelectEmp
+접속 오라클 계정 : scott
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Random;
+
+public class SelectEmp {
+
+   public static void main(String[] args)  {
+      try {
+         Class.forName("oracle.jdbc.OracleDriver"); 
+      }catch(ClassNotFoundException e) {
+         e.printStackTrace();
+      }//드라이버 로딩 만을 위한 try
+      
+      String sql = "SELECT ENAME, TO_CHAR(SAL,'999,999'), TO_CHAR(HIREDATE, 'YYYY\"년 \"MM\"월 \"DD\"일\"')"
+				+ "FROM EMP";
+      //select문 executuequery 실행 // 띄어쓰기 입력방식 'YYYY\"년 \"MM\"월 \"DD\"일\"'
+      
+      Random rd = new Random();
+      Boolean b = rd.nextBoolean();
+       System.out.println(b);
+       //boolean 랜덥식
+      
+      try(
+      Connection conn = DriverManager.getConnection(   
+    		  "jdbc:oracle:thin:@localhost:1521:XE","scott", "tiger");
+    		  //연결할 주소 ,아이디,비번
+    		  //이렇게도 가능 String url = "jdbc:oracle:thin:@localhost:1521:XE";
+    	      //String user = "scott", pwd = "tiger";
+    		 
+
+      Statement stmt = conn.createStatement();
+    		//3. SQL 문을 관리하는 Statement 객체 생성 
+      ResultSet rs = stmt.executeQuery(sql);
+    		//4.SQL 구문 실행
+      )  { 
+         if(b==true) {   
+            while(rs.next())
+               System.out.printf("%s 직원의 월급은 %s원입니다.\n",rs.getString("ENAME"),rs.getString("SAL"));
+         }else {
+        	 while(rs.next())
+            System.out.printf("%s 직원은 %s에 입사하였습니다.\n",rs.getString(1),rs.getString(3));
+         }
+         
+      }catch(Exception e) {
+         System.err.println("오류 발생 : "+ e.toString());
+         }//err 오류다 라는것 
+   }
+}
+
+
+
+
+1. scott 계정으로 접속한다.
+2. true 와 false 랜덤값을 추출한다.
+
+3. true 이면
+   emp 테이블에서 모든 직원들의 이름과 월급, 두 개의 컬럼을 추출한다.
+   다음 형식으로 표준 출력한다.
+
+   XXX 직원의 월급은 x,xxx원입니다. 
+   XXX 직원의 월급은 x,xxx원입니다.
+   XXX 직원의 월급은 xx,xxx원입니다.
+         :
+4. false 이면
+   emp 테이블에서 모든 직원들의 이름과 입사 날짜, 두 개의 컬럼을 추출한다.
+   다음 형식으로 표준 출력한다.
+
+   XXX 직원은 xxxx년 xx월 xx일에 입사하였습니다. 
+   XXX 직원은 xxxx년 xx월 xx일에 입사하였습니다. 
+   XXX 직원은 xxxx년 xx월 xx일에 입사하였습니다. 
+         :
