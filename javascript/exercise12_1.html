@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+	text-align:center;
+	border: 1px solid red;
+	padding-bottom: 3%;
+	}
+	button{
+	width:50px;
+	height: 30px;
+	background-color: skyblue;
+	border : 1px solid blue;
+	border-radius : 5px;
+	}
+
+</style>
+
+</head>
+<body>
+	<h1>구구단(인라인이벤트)</h1>
+	<button onclick="multi(1);">1단</button>
+	<button onclick="multi(2);">2단</button>
+	<button onclick="multi(3);">3단</button>
+	<button onclick="multi(4);">4단</button>
+	<button onclick="multi(5);">5단</button>
+	<button onclick="multi(6);">6단</button>
+	<button onclick="multi(7);">7단</button>
+	<button onclick="multi(8);">8단</button>
+	<button onclick="multi(9);">9단</button>
+
+	<br>
+	<output></output>
+	<!-- output = div 
+	getElementsByTagName/byid 를 통해 html요소 접근  /.innerHTMl -->
+	<script>
+		function multi(n) {
+			var target = document.getElementsByTagName("output")[0];
+			target.innerHTML = "";//처음 빈공간
+			for (var i = 1; i <= 9; i++) {
+				target.innerHTML += 
+					"<br>" + n+ " * " + i + " = " + n * i;
+			}
+		}
+	</script>
+
+</body>
+</html>

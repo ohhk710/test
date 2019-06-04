@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body {
+	text-align: center;
+}
+
+button {
+	background-color: yellow;
+}
+</style>
+</head>
+<body>
+
+	<button onclick="red()">색깔1</button>
+	<button onclick="gray()">색깔2</button>
+	<button onclick="green()">색깔3</button>
+	<output></output>
+	<script>
+		var target = document.getElementsByTagName("output")[0];
+
+		var year = new Date().getFullYear();
+		var month = new Date().getMonth() + 1;
+		var date = new Date().getDate();
+		target.innerHTML = "<h2>" + "오늘은" + year + "년" + month + "월" + date
+				+ "일 입니다" + "</h2>";
+
+		function red() {
+			target.style.color = "red";
+		}
+		function gray() {
+			target.style.color = "gray";
+		}
+		function green() {
+			target.style.color = "green";
+		}
+	</script>
+
+
+</body>
+</html>

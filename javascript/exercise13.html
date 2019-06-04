@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="img">이미지 보이기</button>
+	<button id="ximg">이미지 숨기기</button>
+	<br>
+	<output id="output"></output>
+	<script>
+	//표준모델
+		var target = document.getElementsById("img");
+		target.addEventListener("click", function() {
+			target = document.getElementsById("output"); 
+			target.innerHTML="<img src="http:localhost:8000/edu/jsexam/dom1/exercise13.html>"
+		});//html 화면에보임
+		
+		target= document.getElementsById("ximg");
+		target.addEventListener("click",function(){
+			target.document.getElementsById("output");
+			target.innerHTML=null;
+		})
+		
+/* 다른방식 가능
+ 인라인모델
+ <button onclick="imageOpen()">이미지 보이기</button>
+<button onclick="imageClose()">이미지 숨기기</button>
+<div></div>
+<script>
+var target = document.getElementsByTagName("div")[0];
+function imageOpen() {
+    target.innerHTML = "<img src='http://www.purelogics.net/blog/wp-content/uploads/2019/01/javascript.png'>";
+}
+function imageClose() {
+    target.innerHTML = null;
+}
+ */
+ 
+</script>
+
+
+</body>
+</html>

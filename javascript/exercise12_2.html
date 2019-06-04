@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+body {
+	text-align: center;
+	border: 1px solid indigo;
+	padding: 50px;
+}
+
+button {
+	width: 60px;
+	height: 35px;
+	background-color: skyblue;
+	border: 1px solid blue;
+	border-radius: 5px;
+}
+</style>
+
+</head>
+<body>
+	<!-- 고전이라 각 객체당 이벤트 할당하고 value 로 id 필요없음?? 
+value=name 중복가능 / id는 단 하나
+form/ get 할떄 주로 name 값 받음 but 요소 제어할때 id 주로씀 id로 지정한 값은 서버로 안넘아감-->
+	<h1>구구단 고전이벤트</h1>
+	<button value='1'>1단</button>
+	<button value='2'>2단</button>
+	<button value='3'>3단</button>
+	<button value='4'>4단</button>
+	<button value='5'>5단</button>
+	<button value='6'>6단</button>
+	<button value='7'>7단</button>
+	<button value='8'>8단</button>
+	<button value='9'>9단</button>
+	<output></output>
+
+	<script>
+		function gugudan(e) {
+			var target = document.getElementsByTagName("output");
+			target.innerHTML = "";
+			for (var i = 1; i <= 9; i++)
+				target.innerHTML += <br> + this.value + " * " + i + " = "
+						+ this.value * i;
+		}
+		
+		var btn=document.getElementsByTagName("button")[0];
+		for(var i=0;i<btn.length;i++)
+			btn[i].onclick=gugudan; //이벤트 하나에 이벤트 리스너 하나만 연결 
+	</script>
+
+
+</body>
+</html>

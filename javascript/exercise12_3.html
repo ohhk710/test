@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+body {
+	text-align: center;
+	border: 1px solid indigo;
+	padding: 50px;
+}
+
+button {
+	width: 60px;
+	height: 35px;
+	background-color: skyblue;
+	border: 1px solid blue;
+	border-radius: 5px;
+}
+</style>
+
+</head>
+<body>
+	<!-- 여러개 이벤트리스너 추가가능
+	표준은 addEventListner(이벤트명, 헨들러=동작) -->
+	<h1>구구단 표준</h1>
+	<button value='1'>1단</button>
+	<button value='2'>2단</button>
+	<button value='3'>3단</button>
+	<button value='4'>4단</button>
+	<button value='5'>5단</button>
+	<button value='6'>6단</button>
+	<button value='7'>7단</button>
+	<button value='8'>8단</button>
+	<button value='9'>9단</button>
+	<output></output>
+
+	<script>
+		function gugudan(e) {//this 사용하면 각 객체 값 나옴
+			var target = document.getElementsByTagName("output")[0];
+			target.innerHTML = "";
+			for (var i = 1; i <= 9; i++)
+				target.innerHTML += "<br>" + this.value + " * " + i + " = "
+						+ this.value * i;
+		}
+
+		//버튼클릭 할때 하는 기능 따로 추가
+		var btn = document.getElementsByTagName("button");
+		for (var i = 0; i < btn.length; i++) {//value값 지정 . 각 값은 함수 불러 실행시킴.
+			//btn[i].onclick=gugudan; or
+			btn[i].addEventListener("click", gugudan); //표준 
+			//이벤트 등록하기/여러개가능(이벤트종류,함수이름) 
+		}
+	</script>
+
+</body>
+</html>
