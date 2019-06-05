@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Draw memo on canvas</title>
+</head>
+<body>
+	<section>
+		<canvas id="canvas" width="1000" height="1000">
+    </canvas>
+	</section>
+
+
+	<script>
+		function sm() {
+			var smile = document.getElementById("canvas");
+			canvas = smile.getContext('2d');
+
+			canvas.beginPath();
+			canvas.arc(350, 350, 280, 0, Math.PI * 2, false);
+			canvas.strokeStyle = "red";
+			canvas.fillStyle = "yellow";
+			canvas.stroke();
+			canvas.fill();
+
+			canvas.beginPath();
+			canvas.moveTo(200, 200);
+			canvas.lineTo(350, 300);
+			canvas.stroke();
+
+			canvas.beginPath();
+			canvas.arc(500, 300, 100, 0, Math.PI, true);
+			canvas.stroke();
+
+			canvas.beginPath();
+			canvas.arc(350, 400, 200, 0, Math.PI, false);
+			canvas.stroke();
+			canvas.fillStyle = "red";
+			canvas.fill();
+
+		}
+		window.addEventListener("load", sm, false);
+
+		
+		
+		//함수시작
+
+		//캔버스명.fillStyle="색깔명" 색깔채우기
+		//context.fillRect(0,0,0,0); 색깔채우는 사각형그리기
+		//context.rect( , , , ); 사각형그리기
+		//context.fill()호출 : 채우기
+		//context.closePath(); 다못그린거 선으로 메꾸기
+		/*  canvas.beginPath();
+		 canvas.moveTo(200, 300);
+		 canvas.lineTo(300, 200);
+		 canvas.lineTo(200, 400);
+		 canvas.stroke();  */
+		//직선그리기
+		/* context.beginPath(); 경로초기화
+		context.moveTo(,);시작
+		context.lineTo(,);//선방향
+		context.stroke();끝호출 선그리기 
+		context.strokeStyle="색깔";
+		
+		beginPath() -> closePath() 
+		stroke()로 테두리를 그리고 fill()로 영역을 채움.
+		moveTo()는 패스를 만들때 시작점을 옮기면서 선을 그림, 
+		lineTo(x,y) 지정한 위치에 라인을 더함.
+
+
+		원 : context.arc(x,y,radius,startAngle,endAngle,antiClockwise);
+		//x,y 중심으로 반지름 radius 인 원그리고 start는 시작각도, end 종료각도 ;Math.PI=180 ,시계방향 =false
+		 */
+
+		//자바스크립트로 canvas 가져오기
+	</script>
+
+
+
+
+</body>
+</html>
