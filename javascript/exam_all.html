@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>homework.html</title>
+<style>
+header {
+	background-image: linear-gradient(to right, coral, white, coral);
+	text-align: center;
+	width: 100%;
+}
+
+header>div>img {
+	
+}
+
+h1 {
+	text-shadow: 2px 2px 2pxs white;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+td a:hover {
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+article {
+	margin: 3%;
+	border: 1px solid red;
+	border-radius: 20px;
+	padding: 1%;
+	font-family: monospace;
+}
+
+table {
+	margin-left: 2%;
+}
+
+th {
+	background-color: greenyellow;
+}
+
+figure>img {
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+figure>img:hover {
+	opacity: 0.5;
+}
+
+#imgtitle {
+	text-align: center;
+	font-size: 13px;
+}
+
+iframe {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	height: 300px;
+	padding: 5%;
+}
+
+footer {
+	width: 100%;
+	font-size: 10px;
+	text-align: center;
+	background-color: gray;
+}
+
+/* <style>
+img{
+	width:100px;
+} */
+</style>
+
+</head>
+<script>
+	window.onload = function() {
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() {
+			if (request.readyState == 4) {
+				if (request.status == 200) {
+					var str = request.responseText;
+					var jsObj = JSON.parse(str);
+					var target=document.getElementsByTagName("div");
+					target[0].innerHTML += "<img width='100px' height=auto src= '" + jsObj.img +"'>";
+				}
+			}
+		}
+		request.open("GET", "ajaxexam/content/weather.jsp", true);
+		request.send();
+	}
+	var canvas = document.getElementById('canvas');//캔버스에있는거 데이터저장 삭제등 관리
+	var drop;
+
+	function initiate() {
+
+		drop = document.getElementById('canvas');
+		canvas = drop.getContext('2d');
+
+		var source = document.querySelectorAll('#stickerbox > img');
+		for (var i = 0; i < source.length; i++) {
+			source[i].addEventListener('dragstart', dragged, false);
+			source[i].addEventListener('dragend', ending, false);
+			//source.addEventListener('drag', drag, false);
+		}
+
+		drop.addEventListener('dragover', function(e) {
+			e.preventDefault();
+		}, false);
+		drop.addEventListener('drop', dropped, false);
+	}
+
+	function dragged(e) { //ok
+		var elem = e.target;
+		e.dataTransfer.setData('aa', elem.getAttribute('id'));
+		e.dataTransfer.setDragImage(e.target, 0, 0);
+	}
+
+	function ending(e) { //ok
+		elem = e.target;
+	}
+
+	function dropped(e) {
+		e.preventDefault();
+		var id = e.dataTransfer.getData('aa');
+		var elem = document.getElementById(id);
+
+		var posx = e.pageX - drop.offsetLeft;
+		var posy = e.pageY - drop.offsetTop;
+
+		canvas.drawImage(elem, posx, posy, 50, 50);
+
+	}
+	window.addEventListener('load', initiate, false);
+
+	function saveItem() {
+		localStorage.setItem('canvas', drop.toDataURL());
+	}
+	function loadItem() {
+		var img = new Image();
+		img.src = localStorage.getItem('canvas');
+		img.onload = function() {
+			canvas.drawImage(img, 0, 0);
+		}
+	}
+	function deleteItem() {
+		canvas.clearRect(0, 0, 300, 500);
+	}
+
+	function BgColor() { //ok
+		canvas.fillStyle = document.getElementById("bgc").value;
+		canvas.fillRect(0, 0, 300, 500);
+	}
+
+	function BorderColor() { //ok
+		canvas.strokeStyle = document.getElementById("boc").value;
+		canvas.lineWidth = 20;
+		canvas.strokeRect(0, 0, 300, 500);
+	}
+	function MsgColor(e) {
+		var x = e.offsetX;
+		var y = e.offsetY;
+		var msg = document.getElementById("txt").value;
+
+		canvas.fillStyle = document.getElementById("msgc").value;
+		canvas.font = '30pt 바탕';
+		canvas.fillText(msg, x, y);
+	}
+</script>
+<body>
+
+	<header>
+
+		<h1>
+			HTML5 학습
+			<div></div>
+		</h1>
+		<div id="img"></div>
+		<nav>
+			<a href="https://www.w3schools.com/html/default.asp">W3C</a> <a
+				href="https://www.w3schools.com/html/default.asp">W3CSCHOOLS</a> <a
+				href="https://www.w3schools.com/html/default.asp">jQery</a>
+		</nav>
+	</header>
+
+	<section id="introduction">
+
+
+		<article>
+			<h3>나의 소개</h3>
+			<ul>
+				<li>이름 : 오현경</li>
+				<li>별명 : 오땡</li>
+				<li>관심기술 : R</li>
+				<li>취미 : 산책</li>
+			</ul>
+
+		</article>
+
+		<article>
+			<h3>좋아하는 영화</h3>
+			<table border=1>
+				<tr>
+					<th>제목</th>
+					<th>장르</th>
+				</tr>
+				<tr>
+					<td><a href="https://youtu.be/g7ArZ7VD-QQ"
+						title="Youtue Trailer">Into the wild (2007)</a></td>
+					<td>Adventure</td>
+				</tr>
+
+				<tr>
+					<td><a href="https://youtu.be/3vyUHGl0Y6E"
+						title="Youtue Trailer">The Danish girl (2015)</a></td>
+					<td>Biography</td>
+				</tr>
+				<tr>
+					<td><a href="https://youtu.be/Ej6gP7snEko"
+						title="Youtue Trailer">Jack and the Cuckoo-Clock Heart (2015)</a></td>
+					<td>Animation</td>
+				</tr>
+			</table>
+		</article>
+
+		<article id=introimg>
+			<h3>아름다운 곳</h3>
+
+			<p>
+				남한강과 북한강의 두 물줄기가 합쳐지는 곳이라 해서 두물머리라 불리며 ‘양수리’라는 지명도 여기서 나온 것이다.<br>
+				TV드라마나 영화 속에 자주 등장하는 두물머리는 400년 수령을 자랑하는 느티나무와 황포 돛배로 그 경치가 더욱
+				아름다우며,<br>특히 일교차가 심한 봄, 가을 새벽 물안개가 피어오를 때는 운치가 더한다
+			</p>
+			<figure>
+				<img src="images/w.jpg" alt="두물머리">
+				<p id="imgtitle">두물머리</p>
+			</figure>
+
+		</article>
+
+	</section>
+
+	<aside>
+		<iframe width="560" height="315"
+			src="https://www.youtube.com/embed/M-N2ZsDT-X0" frameborder="0"
+			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen="true"></iframe>
+
+	</aside>
+
+	<section>
+		<header>
+			<h1>HTML5로 크리스마스 카드 만들기</h1>
+		</header>
+
+		<button onclick="saveItem()">저장하기</button>
+		<button onclick="loadItem()">읽어오기</button>
+		<button onclick="deleteItem()">지우기</button>
+
+		<div>
+			<span>배경 칼라 설정 :</span> <input id="bgc" type='color'
+				onchange="BgColor()"> <span>테두리 칼라 설정 :</span> <input
+				id="boc" type='color' onchange="BorderColor()"> <br> <span>메세지
+				칼라 설정 :</span> <input id="msgc" type='color'> <span>입력메세지:</span> <input
+				id="txt" type='text'>
+		</div>
+	</section>
+
+	<section id="dropbox">
+		<canvas id="canvas" width="300" height="500"
+			onclick="MsgColor(window.event)"></canvas>
+	</section>
+
+	<section id="stickerbox">
+		<img id="image1"
+			src="jsexam/xmas/g1.png" width="80px">
+		<img id="image2"
+			src="jsexam/xmas/g2.png" width="80px">
+		<img id="image3"
+			src="jsexam/xmas/g3.png" width="80px">
+		<img id="image4"
+			src="jsexam/xmas/g4.png" width="80px">
+		<img id="image5"
+			src="jsexam/xmas/g5.png" width="80px">
+		<img id="image6"
+			src="jsexam/xmas/g6.png" width="80px">
+	</section>
+
+
+
+	<footer>
+		<em>이 문서는 오현경에 의해 HTML5 와 CSS3 기술을 사용하여 2019년 5월27일에 작성하였습니다.</em>
+	</footer>
+</body>
+</html>
