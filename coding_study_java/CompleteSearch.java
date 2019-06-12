@@ -19,19 +19,19 @@ class CompleteSearch {
 		
 
 		for (int i = 0; i < answers.length; i++) {
-			if (stu1[i1] == stu1.length) {
+			if (i1 == stu1.length) {
 				i1 = 0;
 			}
 			if (answers[i] == stu1[i1]) {
 				cnt1++;
 			}
-			if (stu2[i2] == stu2.length) {
+			if (i2 == stu2.length) {
 				i2 = 0;
 			}
 			if (answers[i] == stu2[i2]) {
 				cnt2++;
 			}
-			if (stu3[i3] == stu3.length) {
+			if (i3 == stu3.length) {
 				i3 = 0;
 			}
 			if (answers[i] == stu3[i3]) {
@@ -63,13 +63,13 @@ class CompleteSearch {
 					list.add(1);
 				else if (cnt2 == one)
 					list.add(2);
-				else if (cnt3 == one) // else °¡´É
+				else if (cnt3 == one) // else ê°€ëŠ¥
 					list.add(3);
 			}
 		}
 		int[] answer = new int[list.size()];
 
-		// ¸®½ºÆ®¿¡¼­ ¹è¿­·Î ÀÌµ¿
+		// ë¦¬ìŠ¤íŠ¸ì—ì„œ ë°°ì—´ë¡œ ì´ë™
 		for (int i = 0; i < answer.length; i++) {
 			answer[i] = list.get(i);
 		
