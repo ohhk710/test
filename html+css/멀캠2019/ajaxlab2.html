@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax 통신을 jquery로 구현</title>
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+
+<script>
+	$(document).ready(function({
+		$.getJSON('content/weather.jsp',function(data){
+			$('body').append("기준 시간 : "+data.time+"<br>");
+	        $('body').append("기온 : "+data.temp+"도<br>");
+	        $('body').append("<h2>날씨 : " + data.wtext + "</h2>");
+	        $('body').append("<img src=../"+data.img+"><br>");
+		});
+	});
+	/* $('body').append("<h2>기준 시간 : "+data.time+"</h2>"
+						+"<h2>기온 : "+data.temp+"도</h2>"
+						+"<h2>날씨 : "+data.wtext+"</h2>"
+						+"<img src='http://70.12.113.170:8000/edu/" +data.img+"' width=100>");
+ */
+ /*$.each(data, function(key, value){
+	key=='time' && $('body').append("<h2>기준 시간 : " + value + "</h2>");
+	key=='temp' && $('body').append("<h2>기온 : " + value + "도</h2>");
+	key=='wtext' && $('body').append("<h2>날씨 : " + value + "</h2>");
+	key=='img' && $('body').append("<img src=/edu/" + value + " width='200'>");
+				});
+  */
+	</script>
+<body>
+	<!-- 	/* $.ajax('content/weather.jsp',{ success : function(data){ var jsObj =
+	JSON.parse(str); $('output').load("content/weather.jsp");
+	$('body').append("
+	<h2>"+$(this).find("time").text() + '</h2>
+	'); $('body').append("
+	<h2>"+$(this).find("temp").text() + '</h2>
+	'); $('body').append("
+	<h2>"+$(this).find("wtext").text() + '</h2>
+	'); } }) })) */ /* window.onload = function() { var request = new
+	XMLHttpRequest();//생성, 초기화 if (request.readyState == 4) { //readyState
+	change 이벤트가 발생해야 작동 0,1,2,3,4 의미! //readyState = xmlhttprequest 객체가
+	현재상태를 나타냄 //0: xmlhttprequest객체생성 //1: open메소드 성공적실행 //2: 모든요청에대한 응답도착
+	//3: 요청한 데이터를 처리중 //4: 요청한 데이터의 처리가 완료되어 응답할준비가됨 if (request.status ==
+	200) { //status : 서버의 문서상태를 나타냄 //200: 서버에 문서존재 / 400: 서버에 문서가 존재하지않음
+	var str = request.responseText; var jsObj = JSON.parse(str);//json 부름
+	var output = "
+	<h2>기준시작 : " + jsObj["time"] + "</h2>
+	" + "
+	<h2>기온 : " + jsObj["temp"] + "도</h2>
+	" + "
+	<h2>날씨 : " + jsObj["wtext"] + "</h2>
+	" + "
+	<img src='../"+jsObj["img"]+ "' width='100' height='200'>";
+	consol.log(output); document.body.innerHTML += output; /* 가능
+	document.body.innerHTML += "
+	<h2>기준 시간 : " + obj.time + "</h2>
+	"; document.body.innerHTML += "
+	<h2>기온 : " + obj.temp + "도</h2>
+	"; document.body.innerHTML += "
+	<img alt="+obj.img+" src=" + obj.img + "></img>"; */ /* } }
+
+	request.open("GET", "content/weather.jsp", true);
+	request.send();//get이라 arg없음 } */ -->
+
+	<h1>오늘의 날씨 정보</h1>
+	<hr>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
