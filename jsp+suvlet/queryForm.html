@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Query 추출 실습</h1>
+<hr>
+<form method="get" action="/sedu/querytest">
+이름 : <input type="text" name="name" value="듀크"><br>
+암호 : <input type="text" name="password" ><br>
+나이 : <input type="text" name="age"  ><br>
+
+성별 : 남성 <input type="radio" name="sexe" value=male>
+	  여성 <input type="radio" name="sexe" value=female><br>
+
+취미 : 피아노 <input type="checkbox" name="hobby" value="Piano" >
+	수영 <input type="checkbox" name="hobby" value="Swimming" >
+	독서 <input type="checkbox" name="hobby" value="Reading" >
+	게임 <input type="checkbox" name="hobby" value="Game"><br>
+
+좋아하는 색 : 
+<select name =color size=1>
+	<option value="레드" selected>레드</option>
+	<option value="블루">블루</option>
+	<option value="그린">그린</option>
+	<option value="블랙">블랙</option>
+	<option value="그레이">그레이</option>
+	<option value="핑크">핑크</option>
+</select>
+<br>
+좋아하는 음식 : <br>
+<select name =food size=4 multiple>
+	<option value="라면">라면</option>
+	<option value="냉면">냉면</option>
+	<option value="짜장면">짜장면</option>
+	<option value="비빔밥">비빔밥</option>
+	<option value="돈까스">돈까스</option>
+	<option value="초밥">초밥</option>
+</select>
+<br>
+	의견<br>
+	<textarea name=texta rows="20" cols="50"></textarea>
+	<input type="hidden" name="비밀1" value=secret1>
+	<input type="hidden" name="비밀2" value=secret2>
+	<br>
+
+<input type="submit" value="보내기">
+<input type="reset" value="다시작성하기">
+
+</form>
+</body>
+</html>
