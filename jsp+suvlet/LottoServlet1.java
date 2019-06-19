@@ -19,20 +19,28 @@ public class LottoServlet1 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
+		//response.setContentType("text/html; charset=utf-8");//서블릿직접응답할때만, 여기서는 jsp도 할줄알음
 
 		int x = Integer.parseInt(request.getParameter("num"));
 		int lot = (int)(Math.random() * 6 + 1);
-
+		//String url;//forward가 반복되니까
 		System.out.println("전달된 값 : " + x + ", 추출된 값 :" + lot);
 		if (x == lot) {
+			//url="jspexam/success.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher("jspexam/success.jsp");
 			rd.forward(request, response);
 		} else {
+			//"jspexam/fail.jsp"
 			RequestDispatcher rd = request.getRequestDispatcher("jspexam/fail.jsp");
 			rd.forward(request, response);
 		}
+		/*
+		 * RequestDispatcher rd = request.getRequestDispatcher("url");
+		 * rd.forward(request, response);
+		 * 또는
+		 * request.getRequestDispatcher(url).forward(request,response);
+		 * 
+		 */
 	}
 
 }
