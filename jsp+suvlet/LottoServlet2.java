@@ -42,14 +42,6 @@ public class LottoServlet2 extends HttpServlet {
 //		동일하지 않으면 위로 메시지와 이미지 정보를 '가지고' =리퀘스트에 객체를 담기
 //		lottoResult.jsp 로 요청을 forward 한다
 
-//		action에서 객체를 request에 담을 때.
-//		request.setAttribute("객체명", 객체);
-//		이렇게 해서 jsp를 호출하면=request.getAttribute("객체명");/ jsp에서 "객체명"을 이용해서 객체를 받을 수 있다
-
-		//request.setAttribut("name",변수) /세션값 생성
-//		request.setAttribute("x", x);
-//		request.setAttribute("lot", lot);
-		
 		//웹브라우저로(클라이언트)=jsp 출력요청 
 		request.setAttribute("src", src);
 		request.setAttribute("msg", msg);

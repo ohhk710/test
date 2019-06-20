@@ -21,10 +21,7 @@ img {
 	text-align: center;
 }
 
-a {
-	color: red;
-	font-weight: bold
-}
+
 </style>
 <body>
 
