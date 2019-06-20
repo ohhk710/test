@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+
+
+div{
+width:400px;
+height:300px;
+background:radial-gradient(ellipse, red 10%, green 80%, yellow 10%);
+border-radius: 40px;
+margin:auto;
+
+}
+</style>
+<body>
+<div>
+<h2>성적을 입력하시오.</h2>
+	<form action="/mvc/edu" method="post">
+		
+		<hr>
+		이름:<input type="text" name="name">
+		<br>
+		평균점수:<input type="text" name="grade">
+		<br>
+		<input type="submit" value="전송">
+		<input type="reset" value="재작성">
+	</form>
+</div>
+</body>
+</html>
