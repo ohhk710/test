@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+class Solution {
+    public int[] solution(int brown, int red) {
+        int[] answer = new int[2];
+        ArrayList <Integer> ary=new ArrayList<Integer>();
+        int sum=brown+red;
+        
+        for(int i=1;i<=sum;i++) {
+        	if(sum%i==0 && sum/i>=i) {
+        		ary.add(i);
+        		ary.add(sum/i);
+        	}
+        }
+       answer[0]=ary.get(ary.size()-1);
+       answer[1]=ary.get(ary.size()-2);
+       return answer;
+    }
+}

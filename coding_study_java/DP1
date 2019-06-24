@@ -1,0 +1,22 @@
+class Solution {
+	public long solution(int N) {
+		long answer = 0;
+
+		long[] answerarray = new long[N];
+
+		if (N == 1)
+			answer = 4;
+		else if (N == 2)
+			answer = 6;
+		else {
+			for (int i = 2; i < N; i++) {
+				answerarray[0] = 4;
+				answerarray[1] = 6;
+
+				answerarray[i] = (answerarray[i - 1] + answerarray[i - 2]);
+				answer = answerarray[i];
+			}
+		}
+		return answer;
+	}
+}
