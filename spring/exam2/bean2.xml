@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	<!--   Constructor Injection = 생성자 통해 객체 바인딩하기 
+	'Homework 클래스의 빈 3개를 생성하는 <bean>태그/Constructor Injection'
+	'Student 클래스의 빈 3개를 생성하는 <bean>태그를 /Setter Injection/name=setter이름 '/ Homework 객체연결=ref
+	!축약형!
+	 -->
+	<bean c:homeworkName="국어" class="exam2.Homework" id="h1"/>
+	<bean c:homeworkName="영어" id="h2" class="exam2.Homework"/>
+	<bean c:homeworkName="수학" id="h3" class="exam2.Homework"/>
+	<bean p:myHomework-ref="h1" p:name="둘리" id="st1" class="exam2.Student"/>
+	<bean p:myHomework-ref="h2" p:name="또치" id="st2" class="exam2.Student"/>
+	<bean p:myHomework-ref="h3" p:name="도우너" id="st3" class="exam2.Student"/>
+</beans>
