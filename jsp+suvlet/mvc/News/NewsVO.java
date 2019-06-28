@@ -7,45 +7,43 @@ public class NewsVO {
 	private String content;
 	private String writedate;
 	private int cnt;
+	
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getWriter() {
 		return writer;
 	}
-	@Override
-	public String toString() {
-		return "NewsVO [id=" + id + ", writer=" + writer + ", title=" + title + ", content=" + content + ", writedate="
-				+ writedate + ", cnt=" + cnt + "]";
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
 	public String getTitle() {
 		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	public String getContent() {
 		return content;
 	}
-	public void setContent(String content) {
-		this.content = content;
-	}
 	public String getWritedate() {
 		return writedate;
-	}
-	public void setWritedate(String writedate) {
-		this.writedate = writedate;
 	}
 	public int getCnt() {
 		return cnt;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public void setWritedate(String writedate) {
+		this.writedate = writedate;
+	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	
+	
 }
