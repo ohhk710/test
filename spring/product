@@ -1,0 +1,23 @@
+@Controller
+@SessionAttributes("/product")//product 이름으로 저장된 데이터를 자동으로 세션에저장
+//SAttributes 와 Attribute 다름 : 후자는 해당이름의 세션 가져와 파라미터에 값을 넣음
+public class ProductController{
+  @ModelAttribute("product") //모두가 사용하도록하는 @/ view에서 사용할 이름설정
+  public ProductVO vo(){
+    return new ProductVO(); //새로운 productvo 객체는 "product"이름으로 저장됨
+    }
+  
+  @RequestMapping("/ProductController")
+  public String pro(@ModelAttribute ("product") ProductVO product, String pid, SessionStatus s){
+      //@MA 를 매개변수로 이용시, "product" 객체 있는지 확인하고 있으면 스트링으로 꺼냄
+      //@MA 와 @SA 이름이 같을 경우, 리턴값은 해당 이름으로 세션에 저장됨
+      if(pid==null){
+        s.setComplete();//null이면 세션 종료
+        return "productResult"; 해당 jsp로 이동
+      }
+      if(pid.equals("p001")) product.setAppleNb(1);
+      else if (pid.equals("p002")) product.setBananaNb(1);
+      else product.setHalabongNb(1);
+      return "productView";
+      
+      
