@@ -48,25 +48,26 @@ public class NewsDAO {
 		
 	public NewsVO listOne(int id) {
 		NewsVO vo=null;
+		String statementCnt = "resource.NewsMapper.cnt";
 		String statement ="resource.NewsMapper.listOne";
-		vo=session.selectOne(statement, id); 
+		vo=session.selectOne(statement, id);
+		vo=session.selectOne(statementCnt, vo);
+		vo=session.selectOne(statement, id);
 		return vo;
 	}
 		
 		
-	public List<NewsVO> listWriter(String writer){
+	public List<NewsVO> listWriter(HashMap<String, String> hash){
 		List<NewsVO> list=null;
 		String statement ="resource.NewsMapper.listWriter";
-		list=session.selectList(statement,writer); 
+		list=session.selectList(statement,hash); 
 		return list;
 	}
 	
-	public List<NewsVO> search(String key, String searchType){ 
+	public List<NewsVO> search(HashMap<String, String> hash){ 
 		List<NewsVO> list=null;
 		String statement ="resource.NewsMapper.listWriter";
-		HashMap<String,String> hashSearch = new HashMap<String, String>();
-		hashSearch.put("key",searchType);
-		list=session.selectList(statement,hashSearch);
+		list=session.selectList(statement,hash);
 		return list;
 	}
 }

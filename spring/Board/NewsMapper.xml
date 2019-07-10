@@ -10,8 +10,8 @@
 	<select id="listOne" resultType="vo.NewsVO" parameterType="_int">
 	select id, writer, title, content,to_char(writedate, 'yyyy/mm/dd HH24:mi') writedate, cnt from news where id=#{id}
 	</select>
-	<select id="listWriter" resultType="vo.NewsVO" parameterType="_int">
-	select id, writer, title, content,to_char(writedate, 'yyyy/mm/dd HH24:mi') writedate, cnt from news where writer =#{writer}
+	<select id="listWriter" resultType="vo.NewsVO" parameterType="java.util.HashMap">
+	select id, writer, title, content,to_char(writedate, 'yyyy/mm/dd HH24:mi') writedate, cnt from news where writer =#{key}
 	</select> <!--${변수명}- 변수 , #{변수명}->'값'  -->
 	<select id="search" resultType="vo.NewsVO"  parameterType="java.util.HashMap">
 	select id,writer, content ,title, to_char(writedate,'yyyy/mm/dd HH24:mi') writedate, cnt from news where ${searchType} like '%'||#{key}||'%'
@@ -19,16 +19,16 @@
 	
 	<insert id="insert" parameterType="vo.NewsVO">
 		<selectKey resultType="int" keyProperty="id" order="BEFORE">
-			select news_seq.nextval from news
+			select news_seq.nextval from dual
 		</selectKey>
-			insert into news values  (#{id, jdbcType=INTEGER} #{writer, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR} ,#{sysdate}, 0)
+			insert into news(id, writer, title, content, writedate, cnt) values  (#{id}, #{writer}, #{title}, #{content} ,sysdate, 0)
 	</insert><!--JDBC 타입으로 NULL을 오류가아닌 null로 입력  -->
 	
 	<update id="update" parameterType="vo.NewsVO">
 		update news set
-			writer=#{writer, jdbcType=VARCHAR},
-			title=#{title, jdbcType=VARCHAR},
-			content=#{content, jdbcType=VARCHAR}
+			writer=#{writer},
+			title=#{title},
+			content=#{content}
 		where id=#{id}
 	</update>
 	
@@ -36,4 +36,9 @@
 		delete from news where id=#{id}
 	</delete>
 	
+	<update id="cnt" parameterType="vo.NewsVO">
+		update news set
+			cnt=#{cnt}+1
+		where id=#{id}
+	</update>
 </mapper>

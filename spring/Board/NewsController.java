@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.NewsDAO;
@@ -21,57 +22,103 @@ import vo.NewsVO;
 public class NewsController {
 	@Autowired
 	NewsDAO dao;
-		//ìš°ì„  ë‰´ìŠ¤ ë¦¬ìŠ¤íŠ¸ë¶€í„°
-		@ModelAttribute("status") //ì„¸ì…˜ì ìš©=íŠ¹ì •ë¦¬ìŠ¤íŠ¸ìœ ì§€ - searchë¥¼ í•´ì‰¬ë¡œ
-		public HashMap hashSearch() {
-			return new HashMap();
-		}
-	
-		@RequestMapping("/newsmain") //ë¦¬ìŠ¤íŠ¸ ì „ì²´ ì¶œë ¥ /ì„¸ì…˜ì—†ì„ë•Œ ì „ì²´ë¦¬ìŠ¤íŠ¸ ìœ ì§€
-		public ModelAndView listAll( ) {
-			ModelAndView mav= new ModelAndView();
-			mav.addObject("listAll",dao.listAll());
-			return mav;
-		}
+
+	// ¿ì¼± ´º½º ¸®½ºÆ®ºÎÅÍ
+	@ModelAttribute("status") // ¼¼¼ÇÀû¿ë=Æ¯Á¤¸®½ºÆ®À¯Áö - search¸¦ ÇØ½¬·Î
+	public HashMap<String,String> hashSearch() {
+		return new HashMap<String,String>();
+	}
+
+	@RequestMapping("/newsMain") // ¸®½ºÆ® ÀüÃ¼ Ãâ·Â /¼¼¼Ç¾øÀ»¶§ ÀüÃ¼¸®½ºÆ® À¯Áö
+	public ModelAndView listAll(SessionStatus session) {
+		ModelAndView mav = new ModelAndView();
+		List<NewsVO> list=dao.listAll();
+		mav.addObject("list", list);
+		session.setComplete();
+		mav.setViewName("news");
+		return mav;
+	}
+
+	@RequestMapping(value = "/news", method = RequestMethod.GET)
+	public ModelAndView doGet(String action, NewsVO vo, @ModelAttribute("status") HashMap<String,String> status,
+			String searchType, String key ) {
+		ModelAndView mav = new ModelAndView();
+		List<NewsVO> list = null;
 		
-		
-		@RequestMapping(value="/news/{action}", method=RequestMethod.GET)
-		public ModelAndView doGet(@PathVariable String action, NewsVO vo, @ModelAttribute("status") HashMap status, String searchType) {
-			ModelAndView mav= new ModelAndView();
+		if (action.equals("read")) {
+			NewsVO volistOne = dao.listOne(vo.getId());
+			System.out.println(volistOne.toString());
+			mav.addObject("vo1", volistOne);			
+		} else if (action.equals("delete")) {
+			if (dao.delete(vo.getId()))
+				mav.addObject("msg", "´º½º¼º°ø");
+			else
+				mav.addObject("msg", "´º½º½ÇÆĞ");
 			
-			if(action.equals("read")) {
-				NewsVO volistOne=dao.listOne(vo.getId());
-				mav.addObject("vo",volistOne);
-				
-			}else if(action.equals("delete")) {
-				if(dao.delete(vo.getId()))
-					mav.addObject("msg", "ë‰´ìŠ¤ì„±ê³µ");
-				else
-					mav.addObject("msg", "ë‰´ìŠ¤ì‹¤íŒ¨");
+		} else {
+			status = new HashMap<String,String>();
+			status.put("key",key );
+			status.put("searchType", searchType);
+			status.put("action", action);
+			
+			if (action.equals("search")) {
+				System.out.println("h1");
+				list = dao.search(status);
+			} else if (action.equals("listwriter")) {
+				System.out.println("h2");
+				list = dao.listWriter(status);	
 			}
-			else {
-				status= new HashMap();
-				status.put("key",searchType);
-				if(action.equals("search")) {
-					status =searchType;
+		}
+		if(list==null) {
+			if(status.containsKey("key")) {
+
+				if (status.get("action").equals("search")) {
+					list = dao.search(status);
+					
+				} else if (status.get("action").equals("listwriter")) {
+					list = dao.listWriter(status);	
 				}
+			}else {
+				list=dao.listAll();
 			}
 		}
+		mav.addObject("list",list);
+		mav.setViewName("news");
+		return mav;
+	}	
+
+	@RequestMapping(value="/news",method= RequestMethod.POST)
+	public ModelAndView doPost(String action, NewsVO vo, @ModelAttribute("status") HashMap<String,String> status ) {
+		ModelAndView mav=new ModelAndView();
+		List<NewsVO> list=null;
 		
-		
-		@RequestMapping("/listOne")
-		public ModelAndView listOne(int id) {
-			ModelAndView mav= new ModelAndView();
-			mav.addObject("listOne",dao.listOne(id))
+		if(action.equals("insert")) {
+			boolean result =dao.insert(vo);
+			if(result)
+				mav.addObject ("msg","´º½º ÀÔ·Â ¼º°ø");
+			else 
+				mav.addObject ("msg","´º½º ¼öÁ¤ ½ÇÆĞ"); 
+		}
+		else if(action.equals("update")) {
+			boolean result=dao.update(vo);
+			if(result)
+				mav.addObject("msg","´º½º ¼º°ø ¼öÁ¤");
+			else
+				mav.addObject("msg", "´º½º ¼öÁ¤ ½ÇÆĞ");
 		}
 		
-		@RequestMapping("/delete")
-		
-		@RequestMapping("/search")
-	
-		@RequestMapping("/writer")
+		if(list==null) {
+			if(status.containsKey("key")) {
+				System.out.println("1");
+					list = dao.search(status);
+			}else {
+				System.out.println("2");
+				list=dao.listAll();
+			}
+		}
+		mav.addObject("list", list);
+		mav.setViewName("news");
+		return mav;
+	}
 
-
-	
-	@RequestMapping(value="/update", method=Request.Method.Post)
 }
