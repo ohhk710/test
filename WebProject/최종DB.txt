@@ -1,0 +1,79 @@
+create table users(
+  u_id number(10) NOT NULL,
+  u_name varchar2(100) NOT NULL,
+  passwd varchar2(255) NOT NULL,
+  email varchar2(10) NOT NULL,
+  age number(10) NOT NULL,
+  created_at date NOT NULL,
+  privilege varchar2(10) NOT NULL,
+  gender varchar2(10) NOT NULL,
+  CONSTRAINT USERS_PK PRIMARY KEY (u_id)
+);
+
+CREATE TABLE userlog
+(
+  u_id number(10) not null,
+  access_time date not null,
+  status varchar2(20),
+  CONSTRAINT USERLOG_FK FOREIGN KEY (u_id) REFERENCES users(u_id)
+);
+
+CREATE TABLE posts
+(
+  p_id number(10) not null,
+  u_id number(10) not null,
+  created_at date NOT NULL,
+  place varchar2(255) NOT NULL,
+  weather varchar2(255) NOT NULL,
+  contents varchar2(255) NOT NULL,
+  startDate date NOT NULL,
+  endDate date NOT NULL,
+  photo1Name varchar2(255) NOT NULL,
+  photo2Name varchar2(255) NOT NULL,
+  CONSTRAINT POSTS_PK PRIMARY KEY (p_id),
+  CONSTRAINT POSTS_FK FOREIGN KEY (u_id) REFERENCES users(u_id)
+);
+
+CREATE TABLE likes
+(
+  l_id number(10) not null,
+  p_id number(10) not null,
+  u_id number(10) not null,
+  generation number(10) not null,
+  CONSTRAINT likeUserInfo_PK PRIMARY KEY (l_id),
+  CONSTRAINT likeUser_FK FOREIGN KEY (p_id) REFERENCES posts(p_id),
+  CONSTRAINT likePost_FK FOREIGN KEY (u_id) REFERENCES users(u_id)
+);
+
+CREATE SEQUENCE U_SEQ_ID INCREMENT BY 1 START WITH 10000;
+CREATE SEQUENCE P_SEQ_ID INCREMENT BY 1 START WITH 50000;
+CREATE SEQUENCE l_SEQ_ID INCREMENT BY 1 START WITH 80000;
+
+CREATE TABLE comments
+(
+  c_id number(10) not null,
+  p_id number(10) not null,
+  u_id number(10) not null,
+ comments varchar2(4000) not null,
+  
+  CONSTRAINT comments_PK PRIMARY KEY (c_id),
+  CONSTRAINT commentsPost_FK FOREIGN KEY (p_id) REFERENCES posts(p_id),
+  CONSTRAINT commentsUser_FK FOREIGN KEY (u_id) REFERENCES users(u_id)
+);
+
+CREATE TABLE comment_likes
+(
+  cl_id number(10) not null,
+  p_id number(10) not null,
+  c_id number(10) not null,
+  u_id number(10) not null,
+  
+  CONSTRAINT commentsLike_PK PRIMARY KEY (cl_id),
+    CONSTRAINT commentsLikeInfo_FK FOREIGN KEY (c_id) REFERENCES comments(c_id),
+  CONSTRAINT commentsLikePost_FK FOREIGN KEY (p_id) REFERENCES posts(p_id),
+  CONSTRAINT commentsLikeuser_FK FOREIGN KEY (u_id) REFERENCES users(u_id)
+
+);
+
+CREATE SEQUENCE c_SEQ_ID INCREMENT BY 1 START WITH 10000;
+CREATE SEQUENCE cl_SEQ_ID INCREMENT BY 1 START WITH 10000;
