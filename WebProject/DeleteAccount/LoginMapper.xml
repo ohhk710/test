@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.LoginMapper">
+	
+	<select id="logininfo" parameterType="vo.SignupVO" resultType="vo.SignupVO">
+		select u_id, passwd from users where u_id=#{u_id} and passwd=#{passwd}
+	</select>
+
+
+	<select id="chkpasswd" parameterType="vo.SignupVO" resultType="_int">
+		select count(*) from users where u_id=#{u_id} and passwd = #{passwd}
+	</select>
+
+
+	<delete id="deleteAccount" parameterType="_int">
+		delete from users where u_id=#{u_id}
+	</delete>
+
+	<update id="updatePasswd" parameterType="vo.SignupVO">
+		update users set passwd=#{passwd} where u_id=#{u_id}
+	</update>
+
+	<update id="updateEmail" parameterType="vo.SignupVO">
+		update users set email=#{email} where u_id=#{u_id}
+	</update>
+
+	<delete id="delete" parameterType="_int">
+		delete from news where u_id=#{u_id}
+	</delete>
+
+	<!-- <insert id="insertPosts" parameterType="vo.PostsVO"> <selectKey resultType="int" 
+		keyProperty="id" order="BEFORE"> select p_SEQ_ID.nextval from dual </selectKey> 
+		insert into posts(u_id, content, writedate) values (#{u_id}, #{content} ,sysdate) 
+		</insert> <insert id="insertPostsInfo" parameterType="vo.PostsInfoVO"> insert 
+		into postsInfo(p_id,place ,weather , photo1Dir, photo2Dir) values (#{p_id},#{place},#{weather},#{photo1Dir}, 
+		#{photo2Dir}) </insert> <update id="update" parameterType="vo.PostsInfoVO"> 
+		update review set </update> -->
+
+
+	<!-- 댓글 <insert id="insert" parameterType="vo.Board"> <selectKey resultType="int" 
+		keyProperty="id" order="BEFORE"> select p_SEQ_ID.nextval from dual </selectKey> 
+		insert into posts(writer, content, writedate) values (#{writer}, #{content} 
+		,sysdate) </insert> <update id="update" parameterType="vo.Board"> update 
+		posts set content=#{content} writedate=sysdate where u_id=#{u_id} </update> -->
+
+
+</mapper>
