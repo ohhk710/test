@@ -29,6 +29,8 @@ tar : 아카이브 (꾸러미) 생성 , 풀기 ,리스트 보기
   gzip myApp.tar ---->myApp.tar.gz 압출풀기
    but, prefer to = tar xvfz myApp.tar.gz  xvfz =z는 압축풀기
 
+bzip2 압축풀기 : -dk 를 같이 주면 원본파일도 남겨둔다
+
 vi
 문자하나 지우기  = x
 한행 삭제 =dd
@@ -111,3 +113,4 @@ u -undo, -redo
 :set nu -행 넘버, : 넘버 :100 :1 shift +g
 /찾을 단어 -단어 찾기, n -forward 방향으로 다음 , N 또는 b(반장) -forward 방향으로 다음
 :s/old단어/new단어
+
