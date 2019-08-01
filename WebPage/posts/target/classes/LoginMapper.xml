@@ -4,48 +4,42 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="LoginMapper">
-	
-	<!--로그인-id,pw 비교  -->
-	<select id="logininfo" parameterType="vo.SignupVO" resultType="vo.SignupVO">
+
+	<!--로그인-id,pw 비교 -->
+	<select id="logininfo" parameterType="vo.SignupVO"
+		resultType="vo.SignupVO">
 		select * from users where u_id=#{u_id} and passwd=#{passwd}
 	</select>
-	
-	<!--아이디 중복체크  -->
-	<select id="chkid" parameterType="vo.SignupVO" resultType="vo.SignupVO">
-		select count(*) from users where u_id=#{u_id}
+
+	<!--아이디 중복체크 -->
+	<select id="chkid" parameterType="String" resultType="int">
+		select
+		count(*) from users where u_id=#{u_id}
 	</select>
 	
-	
-	<!--회원가입은= db에 추가하는것  -->
+	<!--email 중복체크  -->
+	<select id="chkemail" parameterType="String" resultType="int">
+		select count(*) from users where email=#{email}
+	</select>
+
+	<!--회원가입은= db에 추가하는것 -->
 	<insert id="signupmember" parameterType="vo.SignupVO">
-	<!--기준= id 설정. seq 한행씩 선별 -->
-		<selectKey resultType="_int" keyProperty="id" order="BEFORE"> select p_SEQ_ID.nextval from dual </selectKey>
-		insert into users values (#{u_name},#{u_id},#{passwd},#{email},#{age},#{created_at},#{privilege},{gender})
+		<!--기준= id 설정. seq 한행씩 선별 -->
+		<selectKey resultType="String" keyProperty="id" order="BEFORE"> select
+			p_SEQ_ID.nextval from dual </selectKey>
+		insert into users values
+		(#{u_name},#{u_id},#{passwd},#{email},#{age},#{created_at},#{privilege},{gender},#{addr})
 	</insert>
-	
-	
-<!-- 
-
-	<select id="chkpasswd" parameterType="vo.SignupVO" resultType="_int">
-		select count(*) from users where u_id=#{u_id} and passwd = #{passwd}
-	</select>
 
 
-	<delete id="deleteAccount" parameterType="_int">
-		delete from users where u_id=#{u_id}
-	</delete>
-
-	<update id="updatePasswd" parameterType="vo.SignupVO">
-		update users set passwd=#{passwd} where u_id=#{u_id}
-	</update>
-
-	<update id="updateEmail" parameterType="vo.SignupVO">
-		update users set email=#{email} where u_id=#{u_id}
-	</update>
-
-	<delete id="delete" parameterType="_int">
-		delete from news where u_id=#{u_id}
-	</delete> -->
+	<!-- <select id="chkpasswd" parameterType="vo.SignupVO" resultType="_int"> 
+		select count(*) from users where u_id=#{u_id} and passwd = #{passwd} </select> 
+		<delete id="deleteAccount" parameterType="_int"> delete from users where 
+		u_id=#{u_id} </delete> <update id="updatePasswd" parameterType="vo.SignupVO"> 
+		update users set passwd=#{passwd} where u_id=#{u_id} </update> <update id="updateEmail" 
+		parameterType="vo.SignupVO"> update users set email=#{email} where u_id=#{u_id} 
+		</update> <delete id="delete" parameterType="_int"> delete from news where 
+		u_id=#{u_id} </delete> -->
 
 	<!-- <insert id="insertPosts" parameterType="vo.PostsVO"> <selectKey resultType="int" 
 		keyProperty="id" order="BEFORE"> select p_SEQ_ID.nextval from dual </selectKey> 
