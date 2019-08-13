@@ -17,8 +17,11 @@ q( ) :저장
 #### 설정
 
 + 프로젝트 생성 : file -> new project -> New Directory -> New project -> 폴더 이름/위치 설정
+
 + Tools - Global Option : R 설정메뉴  / Code - Save : 저장 파일 언어 UTF-8 설정
+
 + plot : 정적 이미지  / packages : 패키지모음 / viewer : 동적 이미지 show
+
 + File - New File - R script: R스크립트 작성 창 / 콘솔에서는 바로 나옴
 
 + Run 방법
@@ -99,6 +102,213 @@ q( ) :저장
 
   ### 행렬
 
-  
+  + **apply**() : 3번째 arg 에 따라 행/열 단위로 값 나옴
 
+    ​	apply(x2, 1,sum); = 행단위 sum 나옴
   
+  + array(1:30,dim=c(2,3,5)) : 데이터1~30 까지 dim: 2행 3열 5층
+  
+    ​	a1[ , 2 , ] : 생략: 모든 행 , 층 에 2열 
+  
+  + **factor** : 특별한 형태의 벡터 : 정해진 값(=level)만 보관 
+  
+    + f_score<-factor(score)
+      > f_score
+      >  [1] 1 3 2 4 2 1 3 5 1 3 3 3
+      > Levels: 1 2 3 4 5
+      >
+      > summary(f_score)
+      > 1 2 3 4 5 
+      > 3 2 5 1 1
+  
+  
+  
+  ### 데이터셋
+  
+  + 내장 데이터셋:
+  
+    +  data() / View() :원자료 보기 / #Dataframe
+      no <- c(1,2,3,4)
+      name <- c('Apple','Banana','Peach','Berry')
+      qty <- c(5,2,7,9)
+      price <- c(500,200,200,500)
+      fruit <- data.frame(no, name, qty, price)
+      str(fruit)
+      View(fruit)() : 데이터 속성/summary() : 요약데이터
+  
+  + 데이터 만들기
+  
+    #Dataframe
+    no <- c(1,2,3,4)
+    name <- c('Apple','Banana','Peach','Berry')
+    qty <- c(5,2,7,9)
+    price <- c(500,200,200,500)
+    fruit <- **data.frame**(no, name, qty, price)
+    str(fruit)
+    View(fruit)
+  
+    fruit[, c(3,4)] : 열중에 3열과 4열 
+  
+    + 한 열 추출시 : fruit[,3] == **fruit[3]**  == fruit$qty  ==fruit[[3]]
+  
+      
+  
+    ex)
+  
+    df <- data.frame(var1=c(4,3,8), var2=c(2,6,1))
+  
+    ​	 $ var1    : num  4 3 8
+  
+    ​	 $ var2    : num  2 6 1
+  
+    ​	df$var_sum<-df$var1+df$var2
+    ​	df$var_mean<-df$var_sum/2
+  
+    ​	df$result<-ifelse(df$var1>df$var2,"var1이 크다","var2가 작다")
+    ​	str(df)
+  
+    ​		ifelse : if 문처럼 쓰임	
+  
+    ​	여러조건 : <-ifelse**( **score$sum>=230,"A",
+    ​                    		ifelse(score$sum>=215,"B",
+    ​                           	ifelse(score$sum>=200,"C","D")) **)**
+  
+    df
+     	 var1 var2 var_sum 	var_mean      result	
+    1    	4    2       6      		3.0 			var1이 크다
+    2   	 3    6       9    	 	 4.5 			var2가 작다
+    3   	 8    1       9      		4.5			 var1이 크다
+  
+    ------
+  
+    + getwd() : 현재 working directory
+  
+      
+  
+    + #### csv 파일 
+  
+    + <-**read.csv("이름.csv")** : df 로 읽어옴
+  
+    + 제목 행 따로 있음 = 컬럼명
+  
+    + summary 에 만들어지고 추가된거는 chararcter형으로 보임
+  
+      **summary(score$result)**
+  
+      ​	   Length     Class      Mode 
+      ​       20 character character 
+  
+      factor 함수 이용시 summary 로 범주형으로 나와 총계 나옴
+  
+      **summary(factor(score$result))** or table(score$result)
+  
+      ​	fail pass 
+         	9   11 
+  
+    + 구조 변환 -> 마무리는 다시 summary 하면 구조 바뀜
+  
+      + score$id=**as.character**(score$id) : 문자열로 변환
+  
+        score$class=**factor**(score$class) :factor로 변환
+  
+    + **sort**() 정렬 / **order**() 인덱스 정렬
+  
+      + order : df 정렬 할때
+  
+        emp [order(emp$sal) ,  ]  : sal 작은순서로 ,  모든정보
+  
+    + <- **read.csv(file.choose())** : 파일 열기
+  
+    + emp[,c(2,3,6)]
+      emp[,c("ename","job","sal")]
+  
+      or subset() 함수 
+  
+      subset(emp,**select=**c(ename,job,sal))
+  
+      결과 같음
+  
+      > **subset(emp,emp$ename=="KING")**
+      >   empno ename       job mgr   hiredate  sal
+      > 9  7839  KING PRESIDENT  NA 1981-11-17 5000
+      >   comm deptno
+      > 9   NA     10
+      >
+      > **emp$ename=="KING"**
+      >  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+      >  [8] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+      >
+      >  **emp[emp$ename=="KING", ]**
+      >   empno ename       job mgr   hiredate  sal
+      > 9  7839  KING PRESIDENT  NA 1981-11-17 5000
+      >   comm deptno
+      > 9   NA     10
+  
+    + **select ename,sal from emp between 2000 and 3000**
+      subset (emp, select=c("ename","sal"),subset=(sal>=2000 &sal<=3000))
+  
+      == emp[emp$sal>=2000,c("ename","sal")]
+  
+    + emp 에서 **커미션이 정해지지 않은 직원**의 이름과 커미션 정보를 출력한다.
+  
+      ​         (**NA** 값을 채크하는 것은 제공된 교육자료의 6 페이지를 참고한다.)
+  
+      emp[ **is.na** (emp$comm),]
+  
+  + List
+  
+    + 연산 안됨!!!
+  
+    + lds<-list(1,2,3)
+  
+      ​	lds[1] : [[1]]
+      ​			[1] 1
+  
+      ​	lds[1]+10 : 불가능
+      ​	lds [ [ 1 ] ]+10 : 가능
+  
+      a[[1]]
+      [1] 1 2 3
+  
+      > $a
+      > [1] 1 2 3
+      >
+      > a$a
+      > [1] 1 2 3
+      >
+      > a[[1]]
+      > [1] 1 2 3
+      >
+      >  a [ [ 1 ] ] [1]
+      > [1] 1
+  
+    + 합치기 : paste("I'm","Duli","!!") 
+  
+       	두개일때 같은 행 끼리 합쳐짐
+  
+  ### 제어문
+  
++ switch(EXPRE=   , )  정수 이면 정수 번째 , 문자면 해당문자열
+
+  num <- sample(1:10,1)
+  num (=num이 6나오면)
+  switch(EXPR = num,"A","B","C","D")
+
+  for(num in 1:10){
+    cat(num,":",switch(EXPR = num,"A","B","C","D"),"\n")
+  }
+
+  출력:
+
+  1 : A 
+  2 : B 
+  3 : C 
+  4 : D 
+  5 : 
+  6 : 
+
++ <-scan("sample_num.txt") : 텍스트 파일을 불러와 백터로 저장
+
+  <-scan("sample_num.txt" ,what=" ") : what : 데이터를 무엇으로 인식 : "character"
+
+  <-readLine**s**("sample_ansi.txt") : 파일 한줄씩 읽어와 배열에 담음
