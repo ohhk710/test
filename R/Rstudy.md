@@ -187,7 +187,7 @@ q( ) :저장
   
     + #### csv 파일 
   
-    + <-**read.csv("이름.csv")** : df 로 읽어옴
+    + <-**read.csv("이름.csv")** : df 로 읽어옴 
   
     + 제목 행 따로 있음 = 컬럼명
   
@@ -307,8 +307,303 @@ q( ) :저장
   5 : 
   6 : 
 
-+ <-scan("sample_num.txt") : 텍스트 파일을 불러와 백터로 저장
++ <-**scan**("sample_num.txt") : 텍스트 파일 =실수나 문자 ) 불러와 **백터로 저장**
 
-  <-scan("sample_num.txt" ,what=" ") : what : 데이터를 무엇으로 인식 : "character"
+  <-scan("sample_num.txt" ,**what**=" ") : what : 데이터를 무엇으로 인식 : "character"
 
+  + 파일이 테이블 형식 이 아닐때 scan 해서 table화 만들어 table( ) , 필요한거 추출
+  
   <-readLine**s**("sample_ansi.txt") : 파일 한줄씩 읽어와 배열에 담음
+  
++ break : 반복문 나옴
+
++ next = continue
+
+#### 함수
+
++ <- function ( [  ] )
+
++ 호출 : function ( )
+
++ return () 함수! 사용 좋음 arg 있던 (리턴값 지정) / 없던
+
++ 수행문장 1개일때 { } 생략가능
+
++ 함수내 데이터 셋이 c() :백터일때/ 문자 포함하면 큰 타입으로 자동 형변환되서 sum 안됨
+
+  !!!! list () 하면 자동 형변환 안되서 문자따로 숫자 따로 계산됨
+
++ 지역변수 가 다른곳에서는 값 안나옴
+
++ 매개변수 넣어야할때 호출시 무조건 넣어줘야함
+
++ x<<-40  : 외부변수 수정
+
++ 전역변수 / 지역변수
+
+  미리 선언 / 그냥 출력 시 전역변수 값 나오고
+
+  호출시 매개변수=지역변수 로 함수 속에서 값 나옴
+
++ invisible( ) = 함수만 호출할경우 리턴값을 못담음 / 저장해야함
+
++ testParamType <- function(x){
+    if(is.vector(x)) print("벡터를 전달했군요!")
+    if(is.data.frame(x)) print("데이터프레임을 전달했군요!")
+    if(is.list(x)) print("리스트를 전달했군요!")
+    if(is.matrix(x)) print("매트릭스를 전달했군요!")
+    if(is.array(x)) print("배열을 전달했군요!")
+    if(is.function(x)) print("함수를 전달했군요!")
+  }
+
+  #dataframe이 list에, list는 vector에 포함 됨 
+  #list는 원소 1개 짜리 1차원 배열과 같다.
+
+  testParamType(100)
+  testParamType(LETTERS)
+  testParamType(data.frame())
+  testParamType(matrix())
+  testParamType(list())
+  testParamType(array())
+  testParamType(function(){})
+
+  
+
++ testParamType1 <- function(x){
+    result <- NULL
+    if(is.vector(x)  && !is.list(x)) result <-"벡터를 전달했군요!"
+    else if(is.data.frame(x)) result <- "데이터프레임을 전달했군요!"
+    else if(is.list(x)) result <- "리스트를 전달했군요!"
+    else if(is.matrix(x)) result <- "매트릭스를 전달했군요!"
+    else if(is.array(x)) result <- "배열을 전달했군요!"
+    else if(is.function(x)) result <- "함수를 전달했군요!"
+    return(result)
+  }
+  
++ f6<-function(...){ #...가변인자 (...):아무거나 받음
+    print("수행시작")
+    data<-c(...) #받아서  벡터나 리스트나 등등 받아서 변수에 넣음
+    for(item in data){
+      print(item)
+    }
+    return (length(data)) #length로 갯수 
+  }
+
++ 매개변수 : 1 개 =function(x)
+
+     리턴 값 : 숫자
+
+  ​      기능 : 전달받은 아규먼트가 벡터인 경우에만 기능을 수행합니다.
+
+  ​              
+
+  벡터가 “벡터만 전달하숑!”라는 에러 메시지를 가지고 **에러를** 발생한다. 
+
+  =if(is.vector(x)==FALSE)
+          **stop**("벡터만 전달하세요")
+
+  벡터라 하더라도 숫자 벡터가 아니면 “숫자 벡터를 전달하숑!” 라는 **경고** **메시지를** 가지고 경고 에러를 발생한다. 이 때 리턴값은 0이다.
+
+  else{
+          if(is.numeric(x))
+            return(sum(x))
+          else{
+            **warning**("숫자 벡터를 전달하숑!")
+            return(0)
+          }
+        }
+
++ 매개변수 : 가변(숫자, 문자열, 논리형(데이터 타입의 제한이 없다.)
+
+    function(...){
+
+    ​      리턴 값 : 리스트객체
+
+    ​			 return(list(.....)
+
+    ​      기능 : 전달된 아규먼트가 없으면 NULL을 리턴한다.
+
+    ​				data<-list(...)
+    ​					  if(length(data)=0)
+    ​    				      return(NULL)
+
+    ​          전달된 데이터들을 각각의 타입에 알맞게 벡터들을 만들어서 
+
+    ​			for(x in data){
+    ​      			if(is.numeric(x)) 
+    ​       			 num<-**append(num,x)**
+    ​     			 else if(is.character(x))
+    ​       			 char<-append(char,x)
+    ​     			 else if(is.logical(x))
+    ​       			 log<-append(log,x)
+      			  }
+
+    ​				리스트에 담아서 리턴한다.
+
+    ​					return(list("num"=num,"char"=char,"log"=log)) : 
+
+    ​			**빈 것에 넣기 위해 기본 =0 되는 것부터 시작 해야함**
+
+## 웹 크롤링
+
++ installed.packages() 
+  #이미 설치된 패키지 libraray 에 메모리에 올려놓아야 한다
+  search() 
+  #자동으로 메모리에 로딩
+
++ rvest 라이브러리 함수 : 크롤링 해온 html문서에서 원하는 돔객체를 찾고 거기서 원하는 것을 추출하는 
+
+  + library(rvest)
+    url<-"https://movie.daum.net/moviedb/grade?movieId=121137&type=netizen"
+    daummovie1<-NULL
+    text<-read_html(url,encoding = "UTF-8")
+    text
+
+    nodes<-html_nodes(text,'.emph_grade')
+    grade<-html_text(nodes)
+    grade
+
+    nodes<-html_nodes(text,'.desc_review')
+    content<-html_text(nodes,trim=TRUE)
+    review<-gsub("\r\n","",review)
+    content
+
+    page<-cbind(grade,content)
+    page
+    daummovie1<-data.frame(page)
+    write.csv(daummovie1,"daummovie1.csv")
+
+    
+
++ library(rvest)
+  url_base<-"https://movie.daum.net/moviedb/grade?movieId=121137&type=netizen&page="
+  daummovie2**<-NULL**
+  text<-read_html(url_base,encoding = "UTF-8")
+  text
+
+  allmovie2<-data.frame() #할때마다 새롭게 
+
+  **for(i in 1:20) **{
+
+    url=**paste**(url_base,i,sep="")
+    text<-read_html(url,encoding = "UTF-8")
+
+    nodes<-html_nodes(text,'.emph_grade')
+    grade<-html_text(nodes)
+
+    nodes<-html_nodes(text,'.desc_review')
+    content<-html_text(nodes,trim=TRUE)
+    review<-gsub("**[\r\n]**","",review) #정규식
+    content
+
+    daummovie2<-data.frame(grade,content)
+    allmovie2<-**rbind**(allmovie2,daummovie2)
+  }
+
+  write.csv(allmovie2,"daummovie2.csv")
+
++ **xml 라이브러리**
+
+  install.packages("XML")
+  library(XML)
+  t <- htmlParse("http://hankookilbo.com")
+  content<- xpathSApply(t,"**//p[@class='title'**]", xmlValue);  #p의 자손으로
+
+  **xpathSApply**(html,xpath,FUN) :찾은 함수에 바로 함수까지 적용시켜줍니다. / 추출한 노드는 하위 노드의 정보를 모두 포함하고 있습니다.
+
+  **//**하위 아무거나 태그  **/** : 자손중에 고를수있는 태그
+
+  + [[:punct:][:cntrl:]] : 특수문자 
+  + [:cntrl:] : \n , \r 등
+
+  span태그
+  content
+  content <- gsub("[[:punct:][:cntrl:]]", "", content)
+
+  content
+  content <- trimws(content) : 앞뒤 공백제거
+  content
+
+  + httr 패키지 사용 - GET 방식 요청
+
+  install.packages("httr")
+  library(httr)
+  http.standard <- GET('http://www.w3.org/Protocols/rfc2616/rfc2616.html')
+
+  title2 = html_nodes(read_html(http.standard), 'div.toc h2')
+  title2 = html_text(title2)
+  title2
+
+  + httr 패키지 사용 - POST 방식 요청
+
+  library(httr)
+  + POST 함수를 이용해 모바일 게임 랭킹 10월 29일 주  모바일 게임 랭킹을 찾는다
+
+  #(http://www.gevolution.co.kr/score/gamescore.asp?t=3&m=0&d=week) 
+  game = POST('http://www.gevolution.co.kr/score/gamescore.asp?t=3&m=0&d=week',
+              encode = 'form', body=list(txtPeriodW = '2018-12-03'))
+  title2 = html_nodes(read_html(game), 'a.tracktitle')
+  title2 = html_text(title2)
+  title2[1:10]
+
+  + 뉴스, 게시판 등 글 목록에서 글의 URL만 뽑아내기 
+
+  res = GET('https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=001')
+  htxt = read_html(res)
+  link = html_nodes(htxt, 'div.list_body a')
+  article.href = unique(html_attr(link, 'href'))
+  article.href
+  + pdf
+
+  res = GET('http://cran.r-project.org/web/packages/httr/httr.pdf')
+  writeBin(content(res, 'raw'), 'c:/Temp/httr.pdf')
+  + jpg
+
+  h = read_html('http://unico2013.dothome.co.kr/productlog.html')
+  imgs = html_nodes(h, 'img')
+  img.src = html_attr(imgs, 'src')
+  for(i in 1:length(img.src)){
+    res = GET(paste('http://unico2013.dothome.co.kr/',img.src[i], sep=""))
+    writeBin(content(res, 'raw'), paste('c:/Temp/', img.src[i], sep=""))
+  }
+
++ 실습으로 보는 코드
+
+  1. library(httr) #css
+     news<-NULL
+     url <- GET("http://media.daum.net/ranking/popular/")
+     newstitle <- html_nodes(read_html(url), 'ul.list_news2 a.link_txt')
+     newstitle <- html_text(newstitle)
+
+     newspapername <- html_nodes(read_html(url), 'ul.list_news2 span.info_news')
+     newspapername <- html_text(newspapername)
+
+     news <- data.frame(newstitle,newspapername)
+
+     write.csv(news, "daumnews.csv")
+
+  2. library(XML)
+     t<-read_html("http://media.daum.net/ranking/popular/",encoding = "UTF-8")
+     article<-htmlParse(t)
+
+     newstitle <- xpathSApply(t,"//a[@class='link_txt']", xmlValue)
+     newstitle <- gsub("[[:punct:][:cntrl:]]", "", newstitle)
+
+     newspapername  <- xpathSApply(t,"//span[@class='info_news", xmlValue)
+
+     daumnews<-data.frame(newstitle,newspapername)
+     write.csv(daumnews, "daumnews.csv")
+
+     
+
+
+
+
+
+
+
+
+
+
+
+ 
