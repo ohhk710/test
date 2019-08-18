@@ -240,7 +240,7 @@ b.flatten() #항상 메모리 할당 = 원본의 copy를 반환
 
 
 ```python
-#reshape 대신 튜플로 다시 
+#reshape 대신 튜플로 다시 : 자료형이 변환이 안됨
 b.shape=(6,4)
 ```
 
@@ -453,7 +453,7 @@ twice_oned
 
 
 ```python
-np.column_stack((oned,twice_oned))
+np.column_stack((oned,twice_oned)) #1차원을 2차원으로 
 ```
 
 
@@ -466,8 +466,8 @@ np.column_stack((oned,twice_oned))
 
 
 ```python
-#2차원 배열 hstack()
-np.column_stack((a,b))
+#2차원 배열 hstack() 
+np.column_stack((a,b)) #2차원일때는 그냥 hstack() 처럼 합침
 ```
 
 
@@ -633,6 +633,24 @@ b
 
 
 ```python
+b.resize(6,4)
+b
+```
+
+
+
+
+    array([[ 0,  1,  2,  3],
+           [ 4,  5,  6,  7],
+           [ 8,  9, 10, 11],
+           [12, 13, 14, 15],
+           [16, 17, 18, 19],
+           [20, 21, 22, 23]])
+
+
+
+
+```python
 b.ndim #차원
 ```
 
@@ -742,145 +760,116 @@ b
 # 배열의 특정부분을 뷰로 만들수있고 수정가능
 #SciPy 패키지의 face()함수 사용
 import scipy.misc
-```
-
-
-```python
 import matplotlib.pyplot as plt
-```
-
-
-```python
-face=scipy.misc.face() #얼굴이미지 가져오기
-```
-
-
-```python
+face=scipy.misc.face().copy() #얼굴이미지 가져오기
 acopy=face.copy() #배열의 복사본 생성
-```
-
-
-```python
 aview=face.view() #배열의 뷰도 생성
-```
-
-
-```python
 aview.flat=0 #뷰의 모든 값을 flat 연산자를 통해 0으로 한다
-```
-
-
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-110-9c453b163a38> in <module>
-    ----> 1 aview.flat=0 #뷰의 모든 값을 flat 연산자를 통해 0으로 한다
-    
-
-    ValueError: array is read-only
-
-
-
-```python
-plt.imshow(face)
-```
-
-
-
-
-    <matplotlib.image.AxesImage at 0x18059ff6dd8>
-
-
-
-
-![png](output_66_1.png)
-
-
-
-```python
 plt.subplot(221)
-```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1805a05fb00>
-
-
-
-
-![png](output_67_1.png)
-
-
-
-```python
+plt.imshow(face)
 plt.subplot(222)
-```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1805a122908>
-
-
-
-
-![png](output_68_1.png)
-
-
-
-```python
 plt.imshow(acopy)
-```
-
-
-
-
-    <matplotlib.image.AxesImage at 0x1805a19c7b8>
-
-
-
-
-![png](output_69_1.png)
-
-
-
-```python
 plt.subplot(223)
-```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x18059b81a58>
-
-
-
-
-![png](output_70_1.png)
-
-
-
-```python
 plt.imshow(aview)
 ```
 
 
 
 
-    <matplotlib.image.AxesImage at 0x1805a9bcba8>
+    <matplotlib.image.AxesImage at 0x278cffe7e48>
 
 
 
 
-![png](output_71_1.png)
+![png](output_61_1.png)
 
 
 
 ```python
+#예제
+import scipy.misc
+import matplotlib.pyplot as plt
+
+face = scipy.misc.face().copy()
+xmax = face.shape[0]
+ymax = face.shape[1]
+face=face[:min(xmax,ymax),:min(xmax,ymax)]
+xmax = face.shape[0]
+ymax = face.shape[1]
+face[range(xmax), range(ymax)] = 0  #대각선 값을 모두 0으로
+face[range(xmax-1,-1,-1), range(ymax)] = 0   #반대쪽 대각선 값도 모두 0
+plt.imshow(face)
 plt.show()
 ```
+
+
+![png](output_62_0.png)
+
+
+
+```python
+#indexing with list of locations
+import scipy.misc
+import matplotlib.pyplot as plt
+import numpy as np
+
+face = scipy.misc.face()
+xmax = face.shape[0]
+ymax = face.shape[1]
+
+def shuffle_indices(size): #무작위 인덱스 배열 생성
+   arr = np.arange(size)
+   np.random.shuffle(arr)
+
+   return arr
+
+xindices = shuffle_indices(xmax)
+np.testing.assert_equal(len(xindices), xmax)  #같은지 확인
+yindices = shuffle_indices(ymax)
+np.testing.assert_equal(len(yindices), ymax)
+plt.imshow(face[np.ix_(xindices, yindices)])
+#numpy.ix_():특정 열과 행이 교차하는 자리에 위치한 요소를 꺼낼 때
+#1차원 시퀀스를 파라미터로 지정해 numpy배열의 튜플형태로 반환
+plt.show()
+```
+
+
+![png](output_63_0.png)
+
+
+
+```python
+#논리형 인덱싱
+import scipy.misc
+import matplotlib.pyplot as plt
+import numpy as np
+
+face = scipy.misc.face()
+xmax = face.shape[0]
+ymax = face.shape[1]
+face=face[:min(xmax,ymax),:min(xmax,ymax)]
+
+def get_indices(size):
+   arr = np.arange(size)
+   return arr % 4 == 0
+#대각선 값중 4의 배수만 선택
+face1 = face.copy() 
+xindices = get_indices(face.shape[0]) #점들을 그래프로 
+yindices = get_indices(face.shape[1])
+face1[xindices, yindices] = 0
+plt.subplot(211)
+plt.imshow(face1)
+face2 = face.copy() 
+face2[(face > face.max()/4) & (face < 3 * face.max()/4)] = 0
+##최댓값의 1/4부터 3/4에 해당하는 배열 값을 모두 0으로 처리
+plt.subplot(212)
+plt.imshow(face2)
+plt.show()
+```
+
+
+![png](output_64_0.png)
+
 
 
 ```python
