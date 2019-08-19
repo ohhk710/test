@@ -451,7 +451,9 @@ q( ) :저장
   search() 
   #자동으로 메모리에 로딩
 
-+ rvest 라이브러리 함수 : 크롤링 해온 html문서에서 원하는 돔객체를 찾고 거기서 원하는 것을 추출하는 
++ rvest 라이브러리 함수 : 크롤링 해온 html문서에서 원하는 돔객체를 찾고 거기서 원하는 것을 추출하는  : 세션 다시 할때마다 실행해야함
+
++ <head>에 텍스트가 UTF-8인지 아닌지 보고 작성 
 
   + library(rvest)
     url<-"https://movie.daum.net/moviedb/grade?movieId=121137&type=netizen"
@@ -594,16 +596,55 @@ q( ) :저장
      daumnews<-data.frame(newstitle,newspapername)
      write.csv(daumnews, "daumnews.csv")
 
++ **apply**( ) : 행/열 단위 연산 쉽게 (x :데이터타입, fun : 연산함수 , na.rm=T : NA값 제거)
+
+  lapply( ) : 연산 결과를 list형태
+
+  sapply( ) : 행렬/ 벡터/DF 등의 다양한 타입으로 반환 (x: 데이터타입 ,fun : 함수 , simplify =f : 기본- 백터)
+
+  
+
++ **RSelenium**
+
+  + 웹브라우저를 원격조정 하는것  /매크로방식
+
+  + 기존에 학습했던 read_html는 해당 페이지의 소스를 가져오는 것
+
+    , 해당 코드는 이동하는 것이다.
+
+  1. JAVA설치
+
+  2. CMD 에 입력
+  
+     + cd C:\selenuim java
+   + remDr <- remoteDriver(remoteServerAddr = 'localhost', 
+       [#](https://blog.naver.com/PostListByTagName.nhn?blogId=najam90&encodedTagName=) 포트번호 입력
+
+  3. r입력
+  
+     + remDr$open() 
+     + remDr$navigate()
+     + findElement() 함수를 이용하여 특정 위치를 지정 2가지 방식
+       1. xpath 방식
+          - id <- remDr$findElement(using="xpath", value='//*[@id=\"id\"]') / or "[name='q']" :name이 q인 요소 찾기
+       2. css selector방식
+          - id <- remDr$findElement(using="css selector", value="input#id")
+   + sendKeysToElement(list("JAVA", key="enter") :입력하
+       + *list(입력할문자열,key=작업)*
+
      
+  
+   ex)실습
+     + 페이지 번호 규칙찾기
 
+       + 1,2,3,4,5 = 1->2->3->4->4->4->4... 페이지이동방식
 
+     + remDr$executeScript("**scrollBy**(0,8500)") 
 
+       *#페이지 이동*
+  
+       mored <- remDr$findElements(using='css','#dismiss-btn > p')
+       *#해당 p 태그 찾아 - 여기서는 팝업창에 닫기 버튼* 
+     sapply(mored,function(x){x$clickElement()})
+       #*지우기*
 
-
-
-
-
-
-
-
- 
