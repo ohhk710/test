@@ -47,3 +47,16 @@ Numpy 외장 라이브러리
     = array([1,2,3,4])
 
   - a1 원본 값 변경시 a2값 변경 됨 but flatten()만 변경안됨=복사되는것
+  
+- 
+
+- **SciPy** 라이브러리 : 
+
+  - 파이썬 을 기반으로 하여 과학, 분석, 그리고 엔지니어링을 위한 과학(계산)적 컴퓨팅 영역의 여러 기본적인 작업을 위한 라이브러리.
+  -  Scipy는 기본적으로 Numpy, Matplotlib, Pandas, Sympy등 과 함께 사용. NumPy와 Scipy를 함께 사용하면 확장 애드온을 포함한 MATLAB을 완벽하게 대체.
+  - SciPy는 NumPy위에서 구동되는 라이브러리 정도로 이해해도 무방. SciPy는 기본적으로 NumPy의 ndarray를 기본 자료형으로 사용. - Numpy의 < array > 객체 조작 틀
+    - 이미지 작업: 이미지 읽기/쓰기/저장
+    - MATLAB files : .mat 파일 읽기
+    - 두점 사이의 거리 구하기
+    - plotting - 이미지 출력
+  - SciPy는 다른 과학 컴퓨팅 영역을 다루는 하위 패키지로 구성됩니다
