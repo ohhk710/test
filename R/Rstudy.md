@@ -645,6 +645,86 @@ q( ) :저장
   
        mored <- remDr$findElements(using='css','#dismiss-btn > p')
        *#해당 p 태그 찾아 - 여기서는 팝업창에 닫기 버튼* 
-     sapply(mored,function(x){x$clickElement()})
+        sapply(mored,function(x){x$clickElement()})
        #*지우기*
-
+       
+       
+       
+       ### **dplyr** 패키지 : 파이프 기법 사용 : 전처리 사용시 조작편리 패키지
+       
+       str(**ggplot2::**mpg)# 이렇게 써야함
+       
+       mpg<-as.data.frame(ggplot2::mpg) #mpg 를 데이터프레임변환후 이 세션만의 mpg만듦 
+       
+       
+       
+       v3<-함수1( )**%>%** 함수2 () **%>%** 함수3 ()
+       
+       ​	== v3<-함수3(함수2(함수()))
+       
+       
+       
+       - 함수(with ex)
+       
+         - 변수명 변경(데이터,변경후=변경전) : rename(copy_mpg,city=cty) 
+         - 행 추출 : filter(class=="suv") 
+         - 열 (변수) 추출 : select(class,cty) : class,cty 변수 추출
+         - 정렬 : arrange(hwy)
+         - 전체값 통계량 : summarise(변수명=mean(hwy) 
+         - 변수추가 : mutate(meanAsian=asian/total*100)
+         - 집단별로 나눔 : group_by(drv)
+         - 데이터 열 합침 : left_join(mpg,fuel,by="fl")
+         - 데이터 행 합침 :bind_rows(group_a,group_b)
+       
+         
+       
+       + 데이터 만들기 : 
+       
+         test1<-data.frame(id=c(1,2,3,4,5),midterm=c(60,80,70,90,85))
+       
+       + mpg[c(65,124,131,153,212),"hwy"] <- **NA**
+       
+         결측치 NA 삽입
+       
+         table(**is.na**(mpg$drv)) : 결측치 존재 확인
+       
+         filter(**!is.na**(cty)&!is.na(drv)) : 결측치 제외 값 #행 자체 없어짐
+       
+       + mpg[c(10,14,58,93),"drv"]<-"k" 
+       
+         drv 변수에 번호 행마다 "k" 라는 **이상치** :존재x값  넣기
+       
+         - table(mpg$drv)  : 이상치 확인
+       
+         - mpg$drv<-ifelse(mpg$drv**%in%** "k",NA,mpg$drv)
+       
+           이상치 k 있으면 NA :결측치 로 바꾸고 / 아니면 그대로
+       
+         - 상자그림
+       
+           - **boxplot**(mpg$cty)$stats : 이상치 수치로 확인
+       
+           - cty<-ifelse(mpg$cty<9 | mpg$cty>26,NA,mpg$cty)
+       
+             수치 범위 이외는 NA 값으로 아니면 그대로
+       
+       + 또는 na.rm=T 로 제외 가능
+       
+       - **ggplot2** :그래프 패키지
+         - data frame
+         - aes
+         - geoms
+         - stats
+         - scale
+       
+       ​	
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
