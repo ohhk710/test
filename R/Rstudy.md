@@ -717,14 +717,108 @@ q( ) :저장
          - stats
          - scale
        
-       ​	
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+  + 날짜 함수
+  
+    + 현재날짜 : Sys.Date( )
+  
+    + 현재날짜 및 시간 : Sys.time( )
+  
+    + 미국식 날짜 및 시간 : date( )
+  
+    + 문자열 -> 시간 : as.Date("년-월-일 시:분:초")
+  
+    + 특정 포맷 : as.Date("날짜 및 시간 문자열", format="포맷")
+  
+    + 날짜끼리 뺄셈 가능 
+  
+      + as.POSIXct :  1970 기준 지금까지 초시간 저장
+  
+        as.POSIXlt : 년/월/일/시/분/초 나누어 List객체로 저장
+  
+    + %H%M%S : 시분초 , 대문자로!
+  
+  + **apply** **함수**
+  
+    예제
+  
+    ​	weight<-c(65.4,55,380,72.2,51,NA)
+    ​	height<-c(170,155,NA,173,161,166)
+    ​	gender<-c("M","F","M","M","F","F")
+    ​	df<-data.frame(w=weight,h=height)
+  
+    + **apply**() :배열 또는 행렬
+  
+      *apply(df,1,sum,na.rm=TRUE)*
+      [1] 235.4 210.0 380.0 245.2 212.0 166.0
+      *apply(df,2,sum,na.rm=TRUE)*
+          w     h 
+      623.6 825.0 
+  
+    + **lapply**() :결과가 리스트
+  
+      *lapply(df,sum,na.rm=TRUE)*
+      $w
+      [1] 623.6
+  
+      $h
+      [1] 825
+  
+    + **sapply**(): 결과가 심플한 데이터셋
+  
+      *sapply(df,sum,na.rm=TRUE)*
+          w     h 
+      623.6 825.0 
+  
+    + **tapply**() : 벡터->그룹 함수적용
+  
+      *tapply(1:6,gender,sum,na.rm=TRUE)*
+       F  M 
+      13  8 
+  
+    + **mapply**(): sapply확장/ 여러 데이터셋 받아 하나씩 적용
+  
+      *mapply(paste,1:5,LETTERS[1:5],month.abb[1:5]**)*
+      [1] "1 A Jan" "2 B Feb" "3 C Mar" "4 D Apr" "5 E May"
+  
+  + 예제
+  
+    weight<-c(65.4,55,380,72.2,51,NA)
+    **count<-1**
+    myf<-function(x,wt=T){
+      print(paste(x,"(",count,")" ))
+      if(wt)
+        r<-paste("*",x,"*")
+      else
+        r<-paste("#",x,"#")
+      **count<<-count+1; #전역변수에 +1됨**
+      return(r)
+    }
+    **sapply****(df$w,myf) #if절 count증가**
+    sapply(df$w,myf,F) #else로 들어감 count 증가
+    sapply(df$w,myf,wt=F) #else로 들어감 count계속증가
+    rr1<-sapply(df$w,myf,wt=F) #count계속증가
+    #[1] "# 65.4 #" "# 55 #"   "# 380 #"  "# 72.2 #"
+    #[5] "# 51 #"   "# NA #"  
+    str(rr1)
+    count<-1
+    **sapply(df,myf) #한 컬럼이 끝날때까지 같은 count값**
+    rr2<-sapply(df,myf) #r에 모았다가 리턴됨 
+  
+  + stringr()함수 유용 - 문자열 다루기
+  
+    + str_detect() #특정 문자 포함 여부확인
+    + str_count() #특정문자 출현 횟수
+    + str_c() #문자열 합치기
+    + str_dup() #반복출력하기
+    + str_length() #문자열의 길이 출력
+    + str_locate #특정 문자의 위치 값 찾기
+    + str_replace()
+    + str_split()
+    + str_sub()
+    + str_trim() #제거하기
+  
+  + 시각화
+  
+    + 고수준 함수 – plot() :산포도, pie(), barplot(), boxplot(), hist()
+    - 저수준 함수 – title(), lines(), axis(), legend(), points(), text()
+    - 칼라팔레트 함수 – rainbow(), cm.colors(), topo.colors(), terrian.colors(), heat.colors()
