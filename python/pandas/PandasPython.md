@@ -25,10 +25,11 @@ df=read_csv("WHO_first9cols.csv")
 ```python
 print("Dataframe:\n",df) #파일읽기 
 print("\n")
+#df 하면 더 깔끔 .head() 잘나오는지만 볼수있음
 ```
 
     Dataframe:
-                        Unnamed: 0  CountryID  Continent  \
+                           Country  CountryID  Continent  \
     0                 Afghanistan          1          1   
     1                     Albania          2          2   
     2                     Algeria          3          3   
@@ -409,13 +410,783 @@ print("\n")
     [202 rows x 9 columns]
     
     
-    Shape (202, 9)
-    Length 202
     
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>CountryID</th>
+      <th>Continent</th>
+      <th>Adolescent fertility rate (%)</th>
+      <th>Adult literacy rate (%)</th>
+      <th>Gross national income per capita (PPP international $)</th>
+      <th>Net primary school enrolment ratio female (%)</th>
+      <th>Net primary school enrolment ratio male (%)</th>
+      <th>Population (in thousands) total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>1</td>
+      <td>1</td>
+      <td>151.0</td>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26088.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>2</td>
+      <td>2</td>
+      <td>27.0</td>
+      <td>98.7</td>
+      <td>6000.0</td>
+      <td>93.0</td>
+      <td>94.0</td>
+      <td>3172.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>3</td>
+      <td>3</td>
+      <td>6.0</td>
+      <td>69.9</td>
+      <td>5940.0</td>
+      <td>94.0</td>
+      <td>96.0</td>
+      <td>33351.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Andorra</td>
+      <td>4</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>83.0</td>
+      <td>83.0</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Angola</td>
+      <td>5</td>
+      <td>3</td>
+      <td>146.0</td>
+      <td>67.4</td>
+      <td>3890.0</td>
+      <td>49.0</td>
+      <td>51.0</td>
+      <td>16557.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Antigua and Barbuda</td>
+      <td>6</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15130.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Argentina</td>
+      <td>7</td>
+      <td>5</td>
+      <td>62.0</td>
+      <td>97.2</td>
+      <td>11670.0</td>
+      <td>98.0</td>
+      <td>99.0</td>
+      <td>39134.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Armenia</td>
+      <td>8</td>
+      <td>2</td>
+      <td>30.0</td>
+      <td>99.4</td>
+      <td>4950.0</td>
+      <td>84.0</td>
+      <td>80.0</td>
+      <td>3010.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Australia</td>
+      <td>9</td>
+      <td>6</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>33940.0</td>
+      <td>97.0</td>
+      <td>96.0</td>
+      <td>20530.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Austria</td>
+      <td>10</td>
+      <td>2</td>
+      <td>14.0</td>
+      <td>NaN</td>
+      <td>36040.0</td>
+      <td>98.0</td>
+      <td>97.0</td>
+      <td>8327.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Azerbaijan</td>
+      <td>11</td>
+      <td>2</td>
+      <td>31.0</td>
+      <td>98.8</td>
+      <td>5430.0</td>
+      <td>83.0</td>
+      <td>86.0</td>
+      <td>8406.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Bahamas</td>
+      <td>12</td>
+      <td>4</td>
+      <td>46.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>89.0</td>
+      <td>87.0</td>
+      <td>327.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Bahrain</td>
+      <td>13</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>86.5</td>
+      <td>34310.0</td>
+      <td>98.0</td>
+      <td>98.0</td>
+      <td>739.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Bangladesh</td>
+      <td>14</td>
+      <td>7</td>
+      <td>135.0</td>
+      <td>47.5</td>
+      <td>1230.0</td>
+      <td>90.0</td>
+      <td>87.0</td>
+      <td>155991.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Barbados</td>
+      <td>15</td>
+      <td>4</td>
+      <td>51.0</td>
+      <td>NaN</td>
+      <td>15150.0</td>
+      <td>96.0</td>
+      <td>97.0</td>
+      <td>293.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Belarus</td>
+      <td>16</td>
+      <td>2</td>
+      <td>22.0</td>
+      <td>99.6</td>
+      <td>9700.0</td>
+      <td>88.0</td>
+      <td>90.0</td>
+      <td>9742.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Belgium</td>
+      <td>17</td>
+      <td>2</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>33860.0</td>
+      <td>97.0</td>
+      <td>97.0</td>
+      <td>10430.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Belize</td>
+      <td>18</td>
+      <td>5</td>
+      <td>90.0</td>
+      <td>70.3</td>
+      <td>7080.0</td>
+      <td>97.0</td>
+      <td>97.0</td>
+      <td>282.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Benin</td>
+      <td>19</td>
+      <td>3</td>
+      <td>108.0</td>
+      <td>34.7</td>
+      <td>1250.0</td>
+      <td>73.0</td>
+      <td>87.0</td>
+      <td>8760.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Bermuda</td>
+      <td>20</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Bhutan</td>
+      <td>21</td>
+      <td>7</td>
+      <td>62.0</td>
+      <td>NaN</td>
+      <td>4000.0</td>
+      <td>79.0</td>
+      <td>79.0</td>
+      <td>649.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Bolivia</td>
+      <td>22</td>
+      <td>5</td>
+      <td>97.0</td>
+      <td>86.7</td>
+      <td>3810.0</td>
+      <td>95.0</td>
+      <td>94.0</td>
+      <td>9354.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Bosnia and Herzegovina</td>
+      <td>23</td>
+      <td>2</td>
+      <td>25.0</td>
+      <td>96.7</td>
+      <td>6780.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3926.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Botswana</td>
+      <td>24</td>
+      <td>3</td>
+      <td>51.0</td>
+      <td>81.2</td>
+      <td>11730.0</td>
+      <td>85.0</td>
+      <td>83.0</td>
+      <td>1858.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Brazil</td>
+      <td>25</td>
+      <td>5</td>
+      <td>71.0</td>
+      <td>88.6</td>
+      <td>8700.0</td>
+      <td>95.0</td>
+      <td>93.0</td>
+      <td>189323.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Brunei Darussalam</td>
+      <td>26</td>
+      <td>6</td>
+      <td>31.0</td>
+      <td>92.7</td>
+      <td>49900.0</td>
+      <td>94.0</td>
+      <td>94.0</td>
+      <td>382.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Bulgaria</td>
+      <td>27</td>
+      <td>2</td>
+      <td>40.0</td>
+      <td>98.2</td>
+      <td>10270.0</td>
+      <td>92.0</td>
+      <td>93.0</td>
+      <td>7693.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Burkina Faso</td>
+      <td>28</td>
+      <td>3</td>
+      <td>131.0</td>
+      <td>23.6</td>
+      <td>1130.0</td>
+      <td>42.0</td>
+      <td>52.0</td>
+      <td>14359.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Burundi</td>
+      <td>29</td>
+      <td>3</td>
+      <td>30.0</td>
+      <td>59.3</td>
+      <td>320.0</td>
+      <td>73.0</td>
+      <td>76.0</td>
+      <td>8173.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Cambodia</td>
+      <td>30</td>
+      <td>7</td>
+      <td>52.0</td>
+      <td>73.6</td>
+      <td>1550.0</td>
+      <td>89.0</td>
+      <td>91.0</td>
+      <td>14197.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>Swaziland</td>
+      <td>173</td>
+      <td>3</td>
+      <td>73.0</td>
+      <td>79.6</td>
+      <td>4700.0</td>
+      <td>79.0</td>
+      <td>78.0</td>
+      <td>1134.0</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>Sweden</td>
+      <td>174</td>
+      <td>2</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>34310.0</td>
+      <td>95.0</td>
+      <td>95.0</td>
+      <td>9078.0</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>Switzerland</td>
+      <td>175</td>
+      <td>2</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>40840.0</td>
+      <td>89.0</td>
+      <td>89.0</td>
+      <td>7455.0</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>Syria</td>
+      <td>176</td>
+      <td>1</td>
+      <td>58.0</td>
+      <td>80.8</td>
+      <td>4110.0</td>
+      <td>92.0</td>
+      <td>97.0</td>
+      <td>19408.0</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>Taiwan</td>
+      <td>177</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>Tajikistan</td>
+      <td>178</td>
+      <td>2</td>
+      <td>57.0</td>
+      <td>99.5</td>
+      <td>1560.0</td>
+      <td>95.0</td>
+      <td>99.0</td>
+      <td>6640.0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>Tanzania</td>
+      <td>179</td>
+      <td>3</td>
+      <td>139.0</td>
+      <td>69.4</td>
+      <td>980.0</td>
+      <td>97.0</td>
+      <td>98.0</td>
+      <td>39459.0</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>Thailand</td>
+      <td>180</td>
+      <td>6</td>
+      <td>70.0</td>
+      <td>92.6</td>
+      <td>7440.0</td>
+      <td>94.0</td>
+      <td>94.0</td>
+      <td>63444.0</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>Timor-Leste</td>
+      <td>181</td>
+      <td>6</td>
+      <td>49.0</td>
+      <td>NaN</td>
+      <td>5100.0</td>
+      <td>67.0</td>
+      <td>70.0</td>
+      <td>1114.0</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>Togo</td>
+      <td>182</td>
+      <td>3</td>
+      <td>89.0</td>
+      <td>53.2</td>
+      <td>770.0</td>
+      <td>75.0</td>
+      <td>86.0</td>
+      <td>6410.0</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>Tonga</td>
+      <td>183</td>
+      <td>6</td>
+      <td>17.0</td>
+      <td>98.9</td>
+      <td>5470.0</td>
+      <td>94.0</td>
+      <td>97.0</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>Trinidad and Tobago</td>
+      <td>184</td>
+      <td>5</td>
+      <td>35.0</td>
+      <td>98.5</td>
+      <td>16800.0</td>
+      <td>85.0</td>
+      <td>85.0</td>
+      <td>1328.0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Tunisia</td>
+      <td>185</td>
+      <td>1</td>
+      <td>8.0</td>
+      <td>74.3</td>
+      <td>6490.0</td>
+      <td>97.0</td>
+      <td>96.0</td>
+      <td>10215.0</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>Turkey</td>
+      <td>186</td>
+      <td>2</td>
+      <td>51.0</td>
+      <td>87.4</td>
+      <td>8410.0</td>
+      <td>89.0</td>
+      <td>93.0</td>
+      <td>73922.0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>Turkmenistan</td>
+      <td>187</td>
+      <td>2</td>
+      <td>29.0</td>
+      <td>98.8</td>
+      <td>3990.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4899.0</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>Tuvalu</td>
+      <td>188</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>Uganda</td>
+      <td>189</td>
+      <td>3</td>
+      <td>159.0</td>
+      <td>68.1</td>
+      <td>880.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>29899.0</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>Ukraine</td>
+      <td>190</td>
+      <td>2</td>
+      <td>29.0</td>
+      <td>99.4</td>
+      <td>6110.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>46557.0</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>United Arab Emirates</td>
+      <td>191</td>
+      <td>1</td>
+      <td>37.0</td>
+      <td>88.5</td>
+      <td>31190.0</td>
+      <td>88.0</td>
+      <td>88.0</td>
+      <td>4248.0</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>United Kingdom</td>
+      <td>192</td>
+      <td>2</td>
+      <td>27.0</td>
+      <td>NaN</td>
+      <td>33650.0</td>
+      <td>99.0</td>
+      <td>98.0</td>
+      <td>60512.0</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>United States of America</td>
+      <td>193</td>
+      <td>4</td>
+      <td>43.0</td>
+      <td>NaN</td>
+      <td>44070.0</td>
+      <td>93.0</td>
+      <td>91.0</td>
+      <td>302841.0</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Uruguay</td>
+      <td>194</td>
+      <td>5</td>
+      <td>64.0</td>
+      <td>96.8</td>
+      <td>9940.0</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>3331.0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>Uzbekistan</td>
+      <td>195</td>
+      <td>2</td>
+      <td>40.0</td>
+      <td>NaN</td>
+      <td>2190.0</td>
+      <td>78.0</td>
+      <td>79.0</td>
+      <td>26981.0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>Vanuatu</td>
+      <td>196</td>
+      <td>6</td>
+      <td>92.0</td>
+      <td>75.5</td>
+      <td>3480.0</td>
+      <td>86.0</td>
+      <td>88.0</td>
+      <td>221.0</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Venezuela</td>
+      <td>197</td>
+      <td>5</td>
+      <td>81.0</td>
+      <td>93.0</td>
+      <td>10970.0</td>
+      <td>91.0</td>
+      <td>91.0</td>
+      <td>27191.0</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>Vietnam</td>
+      <td>198</td>
+      <td>6</td>
+      <td>25.0</td>
+      <td>90.3</td>
+      <td>2310.0</td>
+      <td>91.0</td>
+      <td>96.0</td>
+      <td>86206.0</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>West Bank and Gaza</td>
+      <td>199</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Yemen</td>
+      <td>200</td>
+      <td>1</td>
+      <td>83.0</td>
+      <td>54.1</td>
+      <td>2090.0</td>
+      <td>65.0</td>
+      <td>85.0</td>
+      <td>21732.0</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>Zambia</td>
+      <td>201</td>
+      <td>3</td>
+      <td>161.0</td>
+      <td>68.0</td>
+      <td>1140.0</td>
+      <td>94.0</td>
+      <td>90.0</td>
+      <td>11696.0</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Zimbabwe</td>
+      <td>202</td>
+      <td>3</td>
+      <td>101.0</td>
+      <td>89.5</td>
+      <td>NaN</td>
+      <td>88.0</td>
+      <td>87.0</td>
+      <td>13228.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>202 rows × 9 columns</p>
+</div>
+
+
+
+
 ```python
-print("Shape",df.shape) #행/열
+print("Shape",df.shape) #행/열 =튜플로 리턴
 print("Length",len(df)) #데이터길이 = 행
 ```
 
@@ -425,7 +1196,7 @@ print("Length",len(df)) #데이터길이 = 행
 
 
 ```python
-print("Column Headers",df.columns) #컬럼명 확인
+print("Column Headers",df.columns) #컬럼명 확인 -> 리스트로 출력
 ```
 
     Column Headers Index(['Unnamed: 0', 'CountryID', 'Continent', 'Adolescent fertility rate (%)',
@@ -484,7 +1255,8 @@ print("Values",df.values) #값 추출
 
 ```python
 country_col = df["Country"]
-print("Type df",type(df))
+print("Type df",type(df)) 
+#type= 객체 df=인스턴스 :그형태에 맞춘 결과물<-클래스: 형태 /
 print("Type country col",type(country_col)) #df타입이 시리즈 타입으로 반환
 ```
 
@@ -553,7 +1325,7 @@ print("Series name:\n", country_col.name, "\n")
 
 
 ```python
-#슬라이싱
+#슬라이싱 
 print("Last 2 countries:\n", country_col[-2:], "\n")
 print("Last 2 countries type:\n", type(country_col[-2:]), "\n")
 ```
@@ -572,7 +1344,8 @@ print("Last 2 countries type:\n", type(country_col[-2:]), "\n")
 ```python
 #NP 사용 in Pandas - sign(): 양수:1, 음수 -1 ,0이면 0
 last_col = df.columns[-1] #마지막 컬럼= 인구수
-print("Last df column signs:\n", last_col, np.sign(df[last_col]), "\n")
+print("Last df column signs:\n", last_col, np.sign(df[last_col]), "\n") 
+#sign:+/-부호
 ```
 
     Last df column signs:
@@ -646,6 +1419,13 @@ print("Last df column signs:\n", last_col, np.sign(df[last_col]), "\n")
     
 
 
+
+
+    'Population (in thousands) total'
+
+
+
+
 ```python
 np.sum([0,np.nan]) #인덱스 0 에 nan
 ```
@@ -681,11 +1461,68 @@ df.dtypes
 
 ```python
 print(np.sum(df[last_col]-df[last_col].values)) #같은값
-#poptotal - #df['변수명'].values : 시리즈에서 특정값 추출 
+#poptotal - #df['변수명'].values : 시리즈에서 특정값 추출
 ```
 
     0.0
     
+
+
+
+
+    array([2.608800e+04, 3.172000e+03, 3.335100e+04, 7.400000e+01,
+           1.655700e+04, 8.400000e+01, 3.913400e+04, 3.010000e+03,
+           2.053000e+04, 8.327000e+03, 8.406000e+03, 3.270000e+02,
+           7.390000e+02, 1.559910e+05, 2.930000e+02, 9.742000e+03,
+           1.043000e+04, 2.820000e+02, 8.760000e+03,          nan,
+           6.490000e+02, 9.354000e+03, 3.926000e+03, 1.858000e+03,
+           1.893230e+05, 3.820000e+02, 7.693000e+03, 1.435900e+04,
+           8.173000e+03, 1.419700e+04, 1.817500e+04, 3.257700e+04,
+           5.190000e+02, 4.265000e+03, 1.046800e+04, 1.646500e+04,
+           1.328474e+06, 4.555800e+04, 8.180000e+02,          nan,
+                    nan, 1.400000e+01, 4.399000e+03, 1.891400e+04,
+           4.556000e+03, 1.126700e+04, 8.460000e+02, 1.018900e+04,
+           5.430000e+03, 8.190000e+02, 6.800000e+01, 9.615000e+03,
+           1.320200e+04, 7.416600e+04, 6.762000e+03, 4.960000e+02,
+           4.692000e+03, 1.340000e+03, 8.102100e+04, 8.330000e+02,
+           5.261000e+03, 6.133000e+04,          nan, 1.311000e+03,
+           1.663000e+03, 4.433000e+03, 8.264100e+04, 2.300800e+04,
+           1.112300e+04, 1.060000e+02, 1.302900e+04, 9.181000e+03,
+           1.646000e+03, 7.390000e+02, 9.446000e+03, 6.969000e+03,
+                    nan, 1.005800e+04, 2.980000e+02, 1.151751e+06,
+           2.288640e+05, 7.027000e+04, 2.850600e+04, 4.221000e+03,
+           6.810000e+03, 5.877900e+04, 2.699000e+03, 1.279530e+05,
+           5.729000e+03, 1.531400e+04, 3.655300e+04, 9.400000e+01,
+                    nan,          nan, 2.779000e+03, 5.259000e+03,
+           5.759000e+03, 2.289000e+03, 4.055000e+03, 1.995000e+03,
+           3.579000e+03, 6.039000e+03, 3.408000e+03, 4.610000e+02,
+                    nan, 2.036000e+03, 1.915900e+04, 1.357100e+04,
+           2.611400e+04, 3.000000e+02, 1.196800e+04, 4.050000e+02,
+           5.800000e+01, 3.044000e+03, 1.252000e+03, 1.053420e+05,
+           1.110000e+02, 3.833000e+03, 3.300000e+01, 2.605000e+03,
+           6.010000e+02, 3.085300e+04, 2.097100e+04, 4.837900e+04,
+           2.047000e+03, 1.000000e+01, 2.764100e+04, 1.637900e+04,
+                    nan,          nan, 4.140000e+03, 5.532000e+03,
+           1.373700e+04, 1.447200e+05, 2.000000e+00, 4.669000e+03,
+           2.546000e+03, 1.609430e+05, 2.000000e+01, 3.288000e+03,
+           6.202000e+03, 6.016000e+03, 2.758900e+04, 8.626400e+04,
+           3.814000e+04, 1.057900e+04,          nan, 8.210000e+02,
+           2.153200e+04, 1.432210e+05, 9.464000e+03, 5.000000e+01,
+           1.630000e+02, 1.200000e+02, 1.850000e+02, 3.100000e+01,
+           1.550000e+02, 2.417500e+04, 1.207200e+04, 9.851000e+03,
+           8.600000e+01, 5.743000e+03, 4.382000e+03, 5.388000e+03,
+           2.001000e+03, 4.840000e+02, 8.445000e+03, 4.828200e+04,
+           4.388700e+04, 1.920700e+04, 3.770700e+04, 4.550000e+02,
+           1.134000e+03, 9.078000e+03, 7.455000e+03, 1.940800e+04,
+                    nan, 6.640000e+03, 3.945900e+04, 6.344400e+04,
+           1.114000e+03, 6.410000e+03, 1.000000e+02, 1.328000e+03,
+           1.021500e+04, 7.392200e+04, 4.899000e+03, 1.000000e+01,
+           2.989900e+04, 4.655700e+04, 4.248000e+03, 6.051200e+04,
+           3.028410e+05, 3.331000e+03, 2.698100e+04, 2.210000e+02,
+           2.719100e+04, 8.620600e+04,          nan, 2.173200e+04,
+           1.169600e+04, 1.322800e+04])
+
+
 
 
 ```python
@@ -694,17 +1531,745 @@ import quandl
 ```
 
 
-    ---------------------------------------------------------------------------
+```python
+sunspots=quandl.get("SIDC/SUNSPOTS_A")
+```
 
-    ModuleNotFoundError                       Traceback (most recent call last)
 
-    <ipython-input-89-6c880ceff5d6> in <module>
-          1 #Querying Data in pandas
-    ----> 2 import quandl
+```python
+type(sunspots) #확인
+```
+
+
+
+
+    pandas.core.frame.DataFrame
+
+
+
+
+```python
+#print("Head 2:\n",sunspots.head(2))
+sunspots.head(2) 
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Yearly Mean Total Sunspot Number</th>
+      <th>Yearly Mean Standard Deviation</th>
+      <th>Number of Observations</th>
+      <th>Definitive/Provisional Indicator</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1700-12-31</th>
+      <td>8.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1701-12-31</th>
+      <td>18.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+print("Tail 2:\n",sunspots.tail(2))
+```
+
+    Tail 2:
+                 Yearly Mean Total Sunspot Number  Yearly Mean Standard Deviation  \
+    Date                                                                           
+    2017-12-31                              21.7                             2.5   
+    2018-12-31                               7.0                             1.1   
+    
+                Number of Observations  Definitive/Provisional Indicator  
+    Date                                                                  
+    2017-12-31                 11444.0                               1.0  
+    2018-12-31                 12611.0                               1.0  
     
 
-    ModuleNotFoundError: No module named 'quandl'
 
+```python
+last_date = sunspots.index[-1]
+print("Last value:\n",sunspots.loc[last_date])
+```
+
+    Last value:
+     Yearly Mean Total Sunspot Number        7.0
+    Yearly Mean Standard Deviation          1.1
+    Number of Observations              12611.0
+    Definitive/Provisional Indicator        1.0
+    Name: 2018-12-31 00:00:00, dtype: float64
+    
+
+
+```python
+print("Values slice by date:\n", sunspots["20020101": "20131231"])
+```
+
+    Values slice by date:
+                 Yearly Mean Total Sunspot Number  Yearly Mean Standard Deviation  \
+    Date                                                                           
+    2002-12-31                             163.6                             9.8   
+    2003-12-31                              99.3                             7.1   
+    2004-12-31                              65.3                             5.9   
+    2005-12-31                              45.8                             4.7   
+    2006-12-31                              24.7                             3.5   
+    2007-12-31                              12.6                             2.7   
+    2008-12-31                               4.2                             2.5   
+    2009-12-31                               4.8                             2.5   
+    2010-12-31                              24.9                             3.4   
+    2011-12-31                              80.8                             6.7   
+    2012-12-31                              84.5                             6.7   
+    2013-12-31                              94.0                             6.9   
+    
+                Number of Observations  Definitive/Provisional Indicator  
+    Date                                                                  
+    2002-12-31                  6588.0                               1.0  
+    2003-12-31                  7087.0                               1.0  
+    2004-12-31                  6882.0                               1.0  
+    2005-12-31                  7084.0                               1.0  
+    2006-12-31                  6370.0                               1.0  
+    2007-12-31                  6841.0                               1.0  
+    2008-12-31                  6644.0                               1.0  
+    2009-12-31                  6465.0                               1.0  
+    2010-12-31                  6328.0                               1.0  
+    2011-12-31                  6077.0                               1.0  
+    2012-12-31                  5753.0                               1.0  
+    2013-12-31                  5347.0                               1.0  
+    
+
+
+```python
+print("Slice from a list of indices:\n", sunspots.iloc[[2, 4, -4, -2]])
+```
+
+    Slice from a list of indices:
+                 Yearly Mean Total Sunspot Number  Yearly Mean Standard Deviation  \
+    Date                                                                           
+    1702-12-31                              26.7                             NaN   
+    1704-12-31                              60.0                             NaN   
+    2015-12-31                              69.8                             6.4   
+    2017-12-31                              21.7                             2.5   
+    
+                Number of Observations  Definitive/Provisional Indicator  
+    Date                                                                  
+    1702-12-31                     NaN                               1.0  
+    1704-12-31                     NaN                               1.0  
+    2015-12-31                  8903.0                               1.0  
+    2017-12-31                 11444.0                               1.0  
+    
+
+
+```python
+print("Scalar with Iloc:", sunspots.iloc[0, 0])
+print("Scalar with iat", sunspots.iat[1, 0])
+```
+
+    Scalar with Iloc: 8.3
+    Scalar with iat 18.3
+    
+
+
+```python
+sunspots > sunspots.mean() #T/F 로나옴
+#sunspots[sunspots > sunspots.mean()] #NaN 으로 나옴 false
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Yearly Mean Total Sunspot Number</th>
+      <th>Yearly Mean Standard Deviation</th>
+      <th>Number of Observations</th>
+      <th>Definitive/Provisional Indicator</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1700-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1701-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1702-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1703-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1704-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1705-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1706-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1707-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1708-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1709-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1710-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1711-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1712-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1713-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1714-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1715-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1716-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1717-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1718-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1719-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1720-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1721-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1722-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1723-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1724-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1725-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1726-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1727-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1728-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1729-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1989-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1990-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1991-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1992-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1993-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1994-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1995-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1996-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1997-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1998-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1999-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2000-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2001-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2002-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2003-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2004-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2005-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2006-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2007-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2008-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2009-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2010-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2011-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2012-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-12-31</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2014-12-31</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2015-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2016-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2017-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2018-12-31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>319 rows × 4 columns</p>
+</div>
+
+
+
+
+```python
+print("Boolean selection with column label:\n", sunspots[sunspots['Number of Observations'] > sunspots['Number of Observations'].mean()])
+```
+
+    Boolean selection with column label:
+                 Yearly Mean Total Sunspot Number  Yearly Mean Standard Deviation  \
+    Date                                                                           
+    1981-12-31                             198.9                            13.1   
+    1982-12-31                             162.4                            12.1   
+    1983-12-31                              91.0                             7.6   
+    1984-12-31                              60.5                             5.9   
+    1985-12-31                              20.6                             3.7   
+    1986-12-31                              14.8                             3.5   
+    1987-12-31                              33.9                             3.7   
+    1988-12-31                             123.0                             8.4   
+    1989-12-31                             211.1                            12.8   
+    1990-12-31                             191.8                            11.2   
+    1991-12-31                             203.3                            12.7   
+    1992-12-31                             133.0                             8.9   
+    1993-12-31                              76.1                             5.8   
+    1994-12-31                              44.9                             4.4   
+    1995-12-31                              25.1                             3.7   
+    1996-12-31                              11.6                             3.1   
+    1997-12-31                              28.9                             3.6   
+    1998-12-31                              88.3                             6.6   
+    1999-12-31                             136.3                             9.3   
+    2000-12-31                             173.9                            10.1   
+    2001-12-31                             170.4                            10.5   
+    2002-12-31                             163.6                             9.8   
+    2003-12-31                              99.3                             7.1   
+    2004-12-31                              65.3                             5.9   
+    2005-12-31                              45.8                             4.7   
+    2006-12-31                              24.7                             3.5   
+    2007-12-31                              12.6                             2.7   
+    2008-12-31                               4.2                             2.5   
+    2009-12-31                               4.8                             2.5   
+    2010-12-31                              24.9                             3.4   
+    2011-12-31                              80.8                             6.7   
+    2012-12-31                              84.5                             6.7   
+    2013-12-31                              94.0                             6.9   
+    2014-12-31                             113.3                             8.0   
+    2015-12-31                              69.8                             6.4   
+    2016-12-31                              39.8                             3.9   
+    2017-12-31                              21.7                             2.5   
+    2018-12-31                               7.0                             1.1   
+    
+                Number of Observations  Definitive/Provisional Indicator  
+    Date                                                                  
+    1981-12-31                  3049.0                               1.0  
+    1982-12-31                  3436.0                               1.0  
+    1983-12-31                  4216.0                               1.0  
+    1984-12-31                  5103.0                               1.0  
+    1985-12-31                  5543.0                               1.0  
+    1986-12-31                  5934.0                               1.0  
+    1987-12-31                  6396.0                               1.0  
+    1988-12-31                  6556.0                               1.0  
+    1989-12-31                  6932.0                               1.0  
+    1990-12-31                  7108.0                               1.0  
+    1991-12-31                  6932.0                               1.0  
+    1992-12-31                  7845.0                               1.0  
+    1993-12-31                  8010.0                               1.0  
+    1994-12-31                  8524.0                               1.0  
+    1995-12-31                  8429.0                               1.0  
+    1996-12-31                  7614.0                               1.0  
+    1997-12-31                  7294.0                               1.0  
+    1998-12-31                  6353.0                               1.0  
+    1999-12-31                  6413.0                               1.0  
+    2000-12-31                  5953.0                               1.0  
+    2001-12-31                  6558.0                               1.0  
+    2002-12-31                  6588.0                               1.0  
+    2003-12-31                  7087.0                               1.0  
+    2004-12-31                  6882.0                               1.0  
+    2005-12-31                  7084.0                               1.0  
+    2006-12-31                  6370.0                               1.0  
+    2007-12-31                  6841.0                               1.0  
+    2008-12-31                  6644.0                               1.0  
+    2009-12-31                  6465.0                               1.0  
+    2010-12-31                  6328.0                               1.0  
+    2011-12-31                  6077.0                               1.0  
+    2012-12-31                  5753.0                               1.0  
+    2013-12-31                  5347.0                               1.0  
+    2014-12-31                  5273.0                               1.0  
+    2015-12-31                  8903.0                               1.0  
+    2016-12-31                  9940.0                               1.0  
+    2017-12-31                 11444.0                               1.0  
+    2018-12-31                 12611.0                               1.0  
+    
 
 
 ```python
@@ -713,16 +2278,99 @@ import quandl
 ```
 
 
-    ---------------------------------------------------------------------------
+```python
+sunspots = quandl.get("SIDC/SUNSPOTS_A")
+sunspots.describe() #다 보기 편함
+```
 
-    ModuleNotFoundError                       Traceback (most recent call last)
 
-    <ipython-input-90-874eda5e1f29> in <module>
-          1 #Statistics with pandas DataFrame
-    ----> 2 import quandl
-    
 
-    ModuleNotFoundError: No module named 'quandl'
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Yearly Mean Total Sunspot Number</th>
+      <th>Yearly Mean Standard Deviation</th>
+      <th>Number of Observations</th>
+      <th>Definitive/Provisional Indicator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>319.000000</td>
+      <td>201.000000</td>
+      <td>201.000000</td>
+      <td>319.0</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>78.970533</td>
+      <td>7.947761</td>
+      <td>1572.751244</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>62.019871</td>
+      <td>3.840522</td>
+      <td>2667.888556</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>1.100000</td>
+      <td>150.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>24.800000</td>
+      <td>4.700000</td>
+      <td>365.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>65.800000</td>
+      <td>7.600000</td>
+      <td>365.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>115.750000</td>
+      <td>10.400000</td>
+      <td>366.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>269.300000</td>
+      <td>19.100000</td>
+      <td>12611.000000</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 
@@ -752,36 +2400,39 @@ print(df)
 ```
 
       Weather       Food     Price  Number
-    0    cold       soup  6.075449       5
-    1     hot       soup  1.705241       5
-    2    cold   icecream  0.650516       5
-    3     hot  chocolate  9.488855       5
-    4    cold   icecream  9.656320       5
-    5     hot   icecream  8.083973       5
-    6    cold       soup  3.046138       5
+    0    cold       soup  3.745401       8
+    1     hot       soup  9.507143       8
+    2    cold   icecream  7.319939       8
+    3     hot  chocolate  5.986585       8
+    4    cold   icecream  1.560186       8
+    5     hot   icecream  1.559945       8
+    6    cold       soup  0.580836       8
     
 
 
 ```python
 weather_group=df.groupby('Weather') #그룹화
+#weather_group ->DATAFRAMEGROUPBY 타입임 
 i=0
 for name, group in weather_group: 
     i=i+1
     print("Group",i,name) 
     print(group)
+    
+#각 데이터는 dataframe으로 됨
 ```
 
     Group 1 cold
       Weather      Food     Price  Number
-    0    cold      soup  6.075449       5
-    2    cold  icecream  0.650516       5
-    4    cold  icecream  9.656320       5
-    6    cold      soup  3.046138       5
+    0    cold      soup  3.745401       8
+    2    cold  icecream  7.319939       8
+    4    cold  icecream  1.560186       8
+    6    cold      soup  0.580836       8
     Group 2 hot
       Weather       Food     Price  Number
-    1     hot       soup  1.705241       5
-    3     hot  chocolate  9.488855       5
-    5     hot   icecream  8.083973       5
+    1     hot       soup  9.507143       8
+    3     hot  chocolate  5.986585       8
+    5     hot   icecream  1.559945       8
     
 
 
@@ -795,44 +2446,61 @@ print("Weather group mean\n", weather_group.mean())
     Weather group first
               Food     Price  Number
     Weather                        
-    cold     soup  6.075449       5
-    hot      soup  1.705241       5
+    cold     soup  3.745401       8
+    hot      soup  9.507143       8
     Weather group last
                   Food     Price  Number
     Weather                            
-    cold         soup  3.046138       5
-    hot      icecream  8.083973       5
+    cold         soup  0.580836       8
+    hot      icecream  1.559945       8
     Weather group mean
                  Price  Number
     Weather                  
-    cold     4.857106       5
-    hot      6.426023       5
+    cold     3.301591       8
+    hot      5.684558       8
     
 
 
 ```python
 wf_group=df.groupby(['Weather','Food'])
-print("WF Groups",wf_group.groups)
+#print("WF Groups",wf_group.groups)
+#테스트로 i를 다시 0부터해서 볼때 , enumerate로 계산
+for i,(name, group) in enumerate(weather_group):
+    i=i+1
+    print("Group",i,name) 
+    print(group)
 ```
 
-    WF Groups {('cold', 'icecream'): Int64Index([2, 4], dtype='int64'), ('cold', 'soup'): Int64Index([0, 6], dtype='int64'), ('hot', 'chocolate'): Int64Index([3], dtype='int64'), ('hot', 'icecream'): Int64Index([5], dtype='int64'), ('hot', 'soup'): Int64Index([1], dtype='int64')}
+    Group 1 cold
+      Weather      Food     Price  Number
+    0    cold      soup  3.745401       8
+    2    cold  icecream  7.319939       8
+    4    cold  icecream  1.560186       8
+    6    cold      soup  0.580836       8
+    Group 2 hot
+      Weather       Food     Price  Number
+    1     hot       soup  9.507143       8
+    3     hot  chocolate  5.986585       8
+    5     hot   icecream  1.559945       8
     
 
 
 ```python
 print("WF Aggregated\n",wf_group.agg([np.mean,np.median]))
 #agg() = apply() 적용
+#np.mean 함수 / np.mean() 함수값
+#agg(함수) : 함수를 받는 함수 / 한번에 여러개 받음
 ```
 
     WF Aggregated
                            Price           Number       
                            mean    median   mean median
     Weather Food                                       
-    cold    icecream   5.153418  5.153418      5      5
-            soup       4.560793  4.560793      5      5
-    hot     chocolate  9.488855  9.488855      5      5
-            icecream   8.083973  8.083973      5      5
-            soup       1.705241  1.705241      5      5
+    cold    icecream   4.440063  4.440063      8      8
+            soup       2.163119  2.163119      8      8
+    hot     chocolate  5.986585  5.986585      8      8
+            icecream   1.559945  1.559945      8      8
+            soup       9.507143  9.507143      8      8
     
 
 
@@ -870,7 +2538,7 @@ print("Concat Back together\n", pd.concat([df[:3], df[3:]]))
 
 
 ```python
-print("Appending rows\n", df[:3].append(df[5:]))
+print("Appending rows\n", df[:3].append(df[5:])) #인덱스!!! a부터 b전까지
 ```
 
     Appending rows
@@ -916,27 +2584,114 @@ print("Tips\n",tips)
 
 ```python
 #merge 기준on='', 같은 값만
-print("Merge() on key\n", pd.merge(dests,tips,on='EmpNr'))
+pd.merge(dests,tips,on='EmpNr')
 ```
 
-    Merge() on key
-        EmpNr       Dest  Amount
-    0      5  The Hague    10.0
-    1      9  Rotterdam     5.0
-    
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EmpNr</th>
+      <th>Dest</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>The Hague</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>Rotterdam</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
 #dest기준으로 tips가 그대로 붙음 suffix left/right 위치
-print("Dests join() tips\n", dests.join(tips,lsuffix='Dest',rsuffix='Tips'))
+dests.join(tips,lsuffix='Dest',rsuffix='Tips')
 ```
 
-    Dests join() tips
-        EmpNrDest       Dest  EmpNrTips  Amount
-    0          5  The Hague          5    10.0
-    1          3  Amsterdam          9     5.0
-    2          9  Rotterdam          7     2.5
-    
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EmpNrDest</th>
+      <th>Dest</th>
+      <th>EmpNrTips</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>The Hague</td>
+      <td>5</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>Amsterdam</td>
+      <td>9</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>Rotterdam</td>
+      <td>7</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -966,7 +2721,7 @@ print("Inner join with merge()\n",pd.merge(dests,tips,how='outer'))
 
 
 ```python
-#Handling missing values
+#Handling missing values 누락된거 처리하기
 df = pd.read_csv('WHO_first9cols.csv')
 df
 ```
@@ -1965,7 +3720,7 @@ print("Illegal date", pd.to_datetime(['1902-11-12', 'not a date']) )
 
     ValueError                                Traceback (most recent call last)
 
-    <ipython-input-193-f0e6bdbcf3c1> in <module>
+    <ipython-input-68-f0e6bdbcf3c1> in <module>
     ----> 1 print("Illegal date", pd.to_datetime(['1902-11-12', 'not a date']) )
     
 
